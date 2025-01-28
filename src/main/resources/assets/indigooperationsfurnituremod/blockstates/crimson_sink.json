@@ -1,0 +1,36 @@
+{
+  "variants": {
+    "facing=north,faucet_on=true": {
+      "model": "indigooperationsfurnituremod:block/crimson_sink_full",
+      "y": 0
+    },
+    "facing=east,faucet_on=true": {
+      "model": "indigooperationsfurnituremod:block/crimson_sink_full",
+      "y": 90
+    },
+    "facing=south,faucet_on=true": {
+      "model": "indigooperationsfurnituremod:block/crimson_sink_full",
+      "y": 180
+    },
+    "facing=west,faucet_on=true": {
+      "model": "indigooperationsfurnituremod:block/crimson_sink_full",
+      "y": 270
+    },
+    "facing=north,faucet_on=false": {
+      "model": "indigooperationsfurnituremod:block/crimson_sink",
+      "y": 0
+    },
+    "facing=east,faucet_on=false": {
+      "model": "indigooperationsfurnituremod:block/crimson_sink",
+      "y": 90
+    },
+    "facing=south,faucet_on=false": {
+      "model": "indigooperationsfurnituremod:block/crimson_sink",
+      "y": 180
+    },
+    "facing=west,faucet_on=false": {
+      "model": "indigooperationsfurnituremod:block/crimson_sink",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,128 @@
+package indigoops.indigooperationsfurnituremod.block.blocklogic;
+
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.ChestBlockEntity;
+import net.minecraft.client.gui.screen.ingame.GenericContainerScreen;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.NbtComponent;
+import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.DoubleInventory;
+import net.minecraft.inventory.Inventory;
+import net.minecraft.inventory.SimpleInventory;
+import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.screen.GenericContainerScreenHandler;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.EnumProperty;
+import net.minecraft.state.property.Properties;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.world.World;
+
+public class SinkBlock extends Block {
+    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
+    public static final BooleanProperty FAUCET = BooleanProperty.of("faucet_on");
+
+    public SinkBlock() {
+        super(AbstractBlock.Settings.create()
+                .strength(1f)
+                .sounds(BlockSoundGroup.WOOD)
+                .nonOpaque()
+        );
+        this.setDefaultState(this.stateManager.getDefaultState()
+                .with(FACING, Direction.NORTH)
+                .with(FAUCET, false));
+    }
+
+    /* had to add append properties to properly register facing with the block */
+    @Override
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        super.appendProperties(builder);
+        builder.add(FACING, FAUCET);
+    }
+
+    /* this logic handles setting the facing to be the direction opposite of what the player is facing */
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        Direction dir = ctx.getHorizontalPlayerFacing().getOpposite();
+        return this.getDefaultState().with(FACING, dir).with(FAUCET, false);
+    }
+
+    @Override
+    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+        // Always check for bucket-related interactions, regardless of sneaking
+        ItemStack itemInHand = player.getStackInHand(Hand.MAIN_HAND);
+        boolean isFaucetOn = state.get(FAUCET);
+
+        // Right click - empty bucket - faucet on
+        if (itemInHand.getItem() == Items.BUCKET && isFaucetOn) {
+            int bucketCount = itemInHand.getCount();
+            ItemStack fullBucket = new ItemStack(Items.WATER_BUCKET);
+            if (bucketCount == 1){
+                world.playSound(null, pos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
+                player.setStackInHand(Hand.MAIN_HAND, fullBucket);
+                return ActionResult.SUCCESS;
+            } else {
+                itemInHand.decrement(1);
+                world.playSound(null, pos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
+                if (!player.getInventory().insertStack(fullBucket)) {
+                    // Try to find an empty spot in the inventory for the full bucket
+                    if (!player.getInventory().insertStack(fullBucket)) {
+                        // If no space, drop the filled bucket on the ground
+                        double x = player.getX();
+                        double y = player.getY();
+                        double z = player.getZ();
+
+                        // Drop the full bucket at the player's (slightly offset)
+                        ItemEntity itemEntity = new ItemEntity(world, x, y + 0.5, z, fullBucket);
+                        world.spawnEntity(itemEntity);
+                    }
+                }
+                return ActionResult.SUCCESS;
+            }
+
+        }
+        // Right click - full bucket of water or lava
+        if (itemInHand.getItem() == Items.WATER_BUCKET || itemInHand.getItem() == Items.LAVA_BUCKET) {
+            itemInHand.decrement(1);
+            ItemStack emptyBucket = new ItemStack(Items.BUCKET);
+            player.setStackInHand(Hand.MAIN_HAND, emptyBucket);
+            world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            return ActionResult.SUCCESS;
+        }
+        // Empty hand and sneaking
+        if (player.isSneaking()) {
+            if (!world.isClient) {
+                boolean newFaucetState = !state.get(FAUCET);
+                world.setBlockState(pos, state.with(FAUCET, newFaucetState), 3);
+                world.playSound(null, pos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
+                return ActionResult.SUCCESS;
+            }
+        }
+        // Empty hand and not sneaking
+        if (itemInHand.isEmpty() && !player.isSneaking()) {
+            openChest(world, pos, player);
+            return ActionResult.SUCCESS;
+        }
+
+        return ActionResult.PASS; // Default if no action was performed
+    }
+
+    // Method to open the chest inventory
+    private void openChest(World world, BlockPos pos, PlayerEntity player) {
+
+    }
+}
