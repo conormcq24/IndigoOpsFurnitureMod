@@ -21,7 +21,7 @@ coming soon
 <img src="https://imgur.com/zZniCKo.png" width="150" height="150" />
 
 #### Crafting Recipe
->Output of sink type is dependent on the wood planks used. Ex: Oak planks will produce an oak sink. All four wooden planks must be of the same type
+>Output of sink type is dependent on the wood planks used. Ex: Oak planks will produce an oak sink. All five wooden planks must be of the same type
 
 <img src="https://imgur.com/kvqkX4N.png" width="150" height="150" />
 
