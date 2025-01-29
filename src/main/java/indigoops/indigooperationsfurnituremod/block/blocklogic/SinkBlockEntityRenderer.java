@@ -31,14 +31,6 @@ public class SinkBlockEntityRenderer implements BlockEntityRenderer<SinkBlockEnt
         // Get the block state (to check facing and faucet state)
         BlockState blockState = blockEntity.getCachedState();
 
-        // Get faucet state (whether it's on or off) and facing direction (North, East, South, West)
-        boolean faucetOn = blockState.get(SinkBlock.FAUCET);  // true if faucet is on, false otherwise
-        Direction facing = blockState.get(SinkBlock.FACING);  // Block's facing direction
-
-        // Determine which model to render (full sink if faucet is on, regular sink otherwise)
-        Identifier modelToRender = faucetOn ? OAK_SINK_FULL : OAK_SINK;
-        BakedModel bakedModel = MinecraftClient.getInstance().getBakedModelManager().getModel(modelToRender);
-
         // Start rendering the model
         matrices.push();
 
@@ -55,7 +47,7 @@ public class SinkBlockEntityRenderer implements BlockEntityRenderer<SinkBlockEnt
         // Create an instance of Random (Minecraft's internal random class)
         Random random = Random.create();
 
-        // Render the block using the BlockRenderManager
+        // I played with matrices for 4 hours and all I got was this stupid line of code
         blockRenderManager.renderBlock(blockState, pos, world, matrices, vertexConsumer, false, random);
 
         // Restore the transformation stack
