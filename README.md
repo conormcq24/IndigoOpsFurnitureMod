@@ -5,6 +5,7 @@ This project is a minecraft fabric mod, it adds several furniture models to the 
 1. [Installation](#installation)
 2. [Supported Minecraft Versions](#supported-minecraft-versions)
 3. [Sinks](#sinks)
+4. [upcoming-furniture](#upcoming-furniture)
 
 # Installation
 coming soon
@@ -38,3 +39,17 @@ coming soon
 >- Oak Sink
 >- Spruce Sink
 >- Warped Sink
+
+#### Upcoming Furniture 
+>- VERSION 1.0.0: The Kitchen
+>- Countertops
+>- Hanging Cabinets
+>- Barstools
+>- Chairs
+>- Dining Table
+>- Oven
+>
+>- Version 1.1.0: The Bedroom
+>- Better Beds (king and twin)
+>- Nightstands
+
