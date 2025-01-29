@@ -41,15 +41,19 @@ coming soon
 >- Warped Sink
 
 #### Upcoming Furniture 
->- VERSION 1.0.0: The Kitchen
->- Countertops
->- Hanging Cabinets
->- Barstools
->- Chairs
->- Dining Table
->- Oven
 >
->- Version 1.1.0: The Bedroom
->- Better Beds (king and twin)
->- Nightstands
+>
+#####VERSION 1.0.0: The Kitchen
+>Countertops
+>Hanging Cabinets
+>Barstools
+>Chairs
+>Dining Table
+>Oven
+>
+>
+#####Version 1.1.0: The Bedroom
+>
+>Better Beds (king and twin)
+>Nightstands
 
