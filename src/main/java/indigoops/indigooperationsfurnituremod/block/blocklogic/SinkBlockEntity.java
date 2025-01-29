@@ -1,23 +1,38 @@
 package indigoops.indigooperationsfurnituremod.block.blocklogic;
 
 import indigoops.indigooperationsfurnituremod.block.ModBlockEntities;
+import indigoops.indigooperationsfurnituremod.screen.ModScreens;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 
-public class SinkBlockEntity extends BlockEntity implements Inventory {
-    private final Inventory inventory = new SimpleInventory(9);  // 9-item inventory like a chest
+public class SinkBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, Inventory {
+    private final SimpleInventory inventory = new SimpleInventory(9);
 
     public SinkBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.SINK_BLOCK_ENTITY, pos, state);
     }
 
-    // Inventory methods
+    @Override
+    public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
+        return new SinkScreenHandler(syncId, playerInventory, this);
+    }
+
+    @Override
+    public Text getDisplayName() {
+        return Text.translatable("block.indigooperationsfurnituremod.sink");
+    }
+
+    // Implement Inventory methods
     @Override
     public int size() {
         return inventory.size();
@@ -49,16 +64,17 @@ public class SinkBlockEntity extends BlockEntity implements Inventory {
     }
 
     @Override
-    public void markDirty() {
-        super.markDirty();
-        inventory.markDirty();
+    public boolean canPlayerUse(PlayerEntity player) {
+        return inventory.canPlayerUse(player);
     }
+
     @Override
     public void clear() {
         inventory.clear();
     }
+
     @Override
-    public boolean canPlayerUse(PlayerEntity player) {
-        return true;  // Allow any player to use the inventory
+    public void markDirty() {
+        super.markDirty();
     }
 }

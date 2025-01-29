@@ -1,7 +1,9 @@
 package indigoops.indigooperationsfurnituremod.block.blocklogic;
 
 import indigoops.indigooperationsfurnituremod.block.blocklogic.SinkBlockEntity;
+import indigoops.indigooperationsfurnituremod.screen.ModScreens;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
@@ -12,23 +14,31 @@ import net.minecraft.util.math.BlockPos;
 public class SinkScreenHandler extends ScreenHandler {
     private final Inventory inventory;
 
-    public SinkScreenHandler(int syncId, PlayerEntity player, Inventory inventory) {
-        super(null, syncId); // We pass null for the 'type' since it's not required here.
+    // Constructor matching the Factory interface requirements
+    // This constructor is called on the client
+    public SinkScreenHandler(int syncId, PlayerInventory playerInventory) {
+        this(syncId, playerInventory, new SimpleInventory(9));
+    }
+
+    // This constructor is called on the server and gets an Inventory implementation
+    public SinkScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory) {
+        super(ModScreens.SINK_SCREEN_HANDLER, syncId);
         this.inventory = inventory;
 
         // Add the Sink's inventory slots (9 slots for a 3x3 grid)
         for (int i = 0; i < 9; i++) {
-            this.addSlot(new Slot(inventory, i, 62 + i * 18, 17));
+            this.addSlot(new Slot(inventory, i, 8 + i * 18, 20));
         }
 
-        // Add the player's inventory slots (for hotbar and the rest of the inventory)
+        // Add the player's inventory slots (for hotbar)
         for (int i = 0; i < 9; i++) {
-            this.addSlot(new Slot(player.getInventory(), i, 8 + i * 18, 142));
+            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 109));
         }
 
+        // Add the rest of the player's inventory slots
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 9; j++) {
-                this.addSlot(new Slot(player.getInventory(), 9 + j + i * 9, 8 + j * 18, 84 + i * 18));
+                this.addSlot(new Slot(playerInventory, 9 + j + i * 9, 8 + j * 18, 51 + i * 18));
             }
         }
     }

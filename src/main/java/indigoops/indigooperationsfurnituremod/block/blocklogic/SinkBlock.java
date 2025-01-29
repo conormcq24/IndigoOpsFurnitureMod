@@ -126,7 +126,10 @@ public abstract class SinkBlock extends BlockWithEntity implements BlockEntityPr
 
     // Method to open the chest inventory
     private void openChest(World world, BlockPos pos, PlayerEntity player) {
-        /* figure this out later */
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (blockEntity instanceof SinkBlockEntity) {
+            player.openHandledScreen((SinkBlockEntity) blockEntity);
+        }
     }
 
 }
