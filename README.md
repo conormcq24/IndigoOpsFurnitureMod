@@ -54,9 +54,13 @@ coming soon
 >
 #####Version 1.1.0: The Bedroom
 >The version that aspires to make your bedroom just a bit more cozy
+>
 >-Better Beds (king and twin)
+>
 >-Nightstands
+>
 >-Ceiling Fans (with light bulbs)
+>
 >-Safes
 >-Dog Beds
 
