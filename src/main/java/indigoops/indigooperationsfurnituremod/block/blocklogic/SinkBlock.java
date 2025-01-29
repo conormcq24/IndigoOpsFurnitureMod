@@ -32,8 +32,9 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
-public class SinkBlock extends BlockWithEntity {
+public abstract class SinkBlock extends BlockWithEntity implements BlockEntityProvider {
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     public static final BooleanProperty FAUCET = BooleanProperty.of("faucet_on");
 
@@ -47,9 +48,11 @@ public class SinkBlock extends BlockWithEntity {
                 .with(FACING, Direction.NORTH)
                 .with(FAUCET, false));
     }
+
+    @Nullable
     @Override
-    protected MapCodec<? extends SinkBlock> getCodec() {
-        return createCodec(SinkBlockEntity::new);
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state){
+        return null;
     }
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {

@@ -1,5 +1,6 @@
 package indigoops.indigooperationsfurnituremod;
 import indigoops.indigooperationsfurnituremod.block.ModBlocks;
+import indigoops.indigooperationsfurnituremod.block.ModBlockEntities;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -11,6 +12,8 @@ public class IndigoOperationsFurnitureMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+
 		ModBlocks.registerModBlocks();
+		ModBlockEntities.registerModBlockEntities();
 	}
 }
