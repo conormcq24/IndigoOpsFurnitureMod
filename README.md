@@ -5,7 +5,7 @@ This project is a minecraft fabric mod, it adds several furniture models to the 
 1. [Installation](#installation)
 2. [Supported Minecraft Versions](#supported-minecraft-versions)
 3. [Sinks](#sinks)
-4. [upcoming-furniture](#upcoming-furniture)
+4. [Upcoming](#upcoming-furniture)
 
 # Installation
 coming soon
