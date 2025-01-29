@@ -41,19 +41,22 @@ coming soon
 >- Warped Sink
 
 #### Upcoming Furniture 
->
->
-#####VERSION 1.0.0: The Kitchen
->Countertops
->Hanging Cabinets
->Barstools
->Chairs
->Dining Table
->Oven
+
+#####VERSION 1.0.0:
+>The version with a focus on bringing your minecraft kitchen to life
+>-Countertops
+>-Hanging Cabinets
+>-Barstools
+>-Chairs
+>-Dining Table
+>-Oven
 >
 >
 #####Version 1.1.0: The Bedroom
->
->Better Beds (king and twin)
->Nightstands
+>The version that aspires to make your bedroom just a bit more cozy
+>-Better Beds (king and twin)
+>-Nightstands
+>-Ceiling Fans (with light bulbs)
+>-Safes
+>-Dog Beds
 
