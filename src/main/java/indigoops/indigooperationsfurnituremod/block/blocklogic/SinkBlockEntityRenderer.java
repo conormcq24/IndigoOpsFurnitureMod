@@ -35,39 +35,12 @@ public class SinkBlockEntityRenderer implements BlockEntityRenderer<SinkBlockEnt
         boolean faucetOn = blockState.get(SinkBlock.FAUCET);  // true if faucet is on, false otherwise
         Direction facing = blockState.get(SinkBlock.FACING);  // Block's facing direction
 
-        // Set up rotation based on the facing direction (rotation needs to face the opposite direction of the player)
-        int rotationY = 0;
-        switch (facing) {
-            case EAST:
-                rotationY = 0;  // If facing East, we want the texture facing West (opposite)
-                break;
-            case SOUTH:
-                rotationY = 0;  // If facing South, we want the texture facing North
-                break;
-            case WEST:
-                rotationY = 0;  // If facing West, we want the texture facing East
-                break;
-            case NORTH:
-            default:
-                rotationY = 0;  // If facing North, we want the texture facing South
-                break;
-        }
-
         // Determine which model to render (full sink if faucet is on, regular sink otherwise)
         Identifier modelToRender = faucetOn ? OAK_SINK_FULL : OAK_SINK;
         BakedModel bakedModel = MinecraftClient.getInstance().getBakedModelManager().getModel(modelToRender);
 
         // Start rendering the model
         matrices.push();
-
-        // Translate the model so that it's centered on its block position
-        if (rotationY != 0){
-            matrices.translate(0F, 0F, 0F);  // Ensure the model is centered
-        }
-
-
-        // Apply rotation based on the facing direction using RotationAxis
-        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(rotationY));  // Rotate the model
 
         // Get the world and block position (this is important for correct rendering)
         ClientWorld world = MinecraftClient.getInstance().world;
