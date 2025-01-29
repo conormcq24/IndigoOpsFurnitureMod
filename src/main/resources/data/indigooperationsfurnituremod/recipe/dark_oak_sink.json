@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "!": {
+      "item": "minecraft:dark_oak_planks"
+    },
+    "#": {
+      "item": "minecraft:chest"
+    },
+    "@": {
+      "item": "minecraft:water_bucket"
+    }
+  },
+  "pattern": [
+    "@@@",
+    "!#!",
+    "!!!"
+  ],
+  "result": {
+    "count": 1,
+    "id": "indigooperationsfurnituremod:dark_oak_sink"
+  }
+}
