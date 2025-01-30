@@ -53,6 +53,8 @@ This project is a minecraft fabric mod, it adds several furniture models to the 
 >- Oak Sink
 >- Spruce Sink
 >- Warped Sink
+>  
+> First Implemented Version 1.0.0
 
 ---
 ## Upcoming Features
