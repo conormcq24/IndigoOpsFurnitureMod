@@ -1,5 +1,6 @@
 package indigoops.indigooperationsfurnituremod.screen;
 
+import indigoops.indigooperationsfurnituremod.block.blocklogic.CounterTopScreenHandler;
 import indigoops.indigooperationsfurnituremod.block.blocklogic.SinkScreenHandler;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -14,6 +15,7 @@ import net.minecraft.util.Identifier;
 public class ModScreens {
     // Removed static initialization to prevent it from running too early
     public static ScreenHandlerType<SinkScreenHandler> SINK_SCREEN_HANDLER;
+    public static ScreenHandlerType<CounterTopScreenHandler> COUNTER_TOP_SCREEN_HANDLER;
 
     // Register screen handler during mod initialization
     public static void register() {
@@ -22,10 +24,16 @@ public class ModScreens {
                 Identifier.of("indigooperationsfurnituremod", "sink"),
                 new ScreenHandlerType<>(SinkScreenHandler::new, FeatureSet.empty())
         );
+        COUNTER_TOP_SCREEN_HANDLER = Registry.register(
+                Registries.SCREEN_HANDLER,
+                Identifier.of("indigooperationsfurnituremod", "countertop"),
+                new ScreenHandlerType<>(CounterTopScreenHandler::new, FeatureSet.empty())
+        );
     }
 
     @Environment(EnvType.CLIENT)
     public static void registerScreens() {
         HandledScreens.register(SINK_SCREEN_HANDLER, SinkScreen::new);
+        HandledScreens.register(COUNTER_TOP_SCREEN_HANDLER, CounterTopScreen::new);
     }
 }

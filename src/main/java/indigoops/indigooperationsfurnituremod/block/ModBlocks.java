@@ -12,7 +12,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModBlocks {
-    // Use concrete classes
+    /* sinks */
     public static final Block ACACIA_SINK = registerBlock("acacia_sink", new AcaciaSinkBlock());
     public static final Block BIRCH_SINK = registerBlock("birch_sink", new BirchSinkBlock());
     public static final Block CHERRY_SINK = registerBlock("cherry_sink", new CherrySinkBlock());
@@ -23,7 +23,9 @@ public class ModBlocks {
     public static final Block OAK_SINK = registerBlock("oak_sink", new OakSinkBlock());
     public static final Block SPRUCE_SINK = registerBlock("spruce_sink", new SpruceSinkBlock());
     public static final Block WARPED_SINK = registerBlock("warped_sink", new WarpedSinkBlock());
-    // Add more concrete subclasses as needed
+
+    /* counter tops */
+    public static final Block OAK_COUNTER_TOP = registerBlock("oak_counter_top", new OakCounterTopBlock());
 
     private static Block registerBlock(String name, Block block){
         registerBlockItem(name, block);
@@ -48,6 +50,7 @@ public class ModBlocks {
             entries.add(ModBlocks.OAK_SINK);
             entries.add(ModBlocks.SPRUCE_SINK);
             entries.add(ModBlocks.WARPED_SINK);
+            entries.add(ModBlocks.OAK_COUNTER_TOP);
         });
     }
 }

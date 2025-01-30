@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "!": {
+      "item": "minecraft:oak_planks"
+    },
+    "#": {
+      "item": "minecraft:chest"
+    },
+    "@": {
+      "item": "minecraft:deepslate_tile_slab"
+    }
+  },
+  "pattern": [
+    "@@@",
+    "!#!",
+    "!!!"
+  ],
+  "result": {
+    "count": 1,
+    "id": "indigooperationsfurnituremod:oak_counter_top"
+  }
+}

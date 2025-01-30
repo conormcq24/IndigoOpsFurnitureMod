@@ -17,22 +17,23 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.math.RotationAxis;
 import net.minecraft.util.math.random.Random;
 
-public class SinkBlockEntityRenderer implements BlockEntityRenderer<SinkBlockEntity> {
-    public SinkBlockEntityRenderer(BlockEntityRendererFactory.Context context) {
+public class CounterTopBlockEntityRenderer implements BlockEntityRenderer<CounterTopBlockEntity> {
+
+    public CounterTopBlockEntityRenderer(BlockEntityRendererFactory.Context context) {
         // Initialize any additional resources like models if necessary
     }
 
     @Override
-    public void render(SinkBlockEntity blockEntity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+    public void render(CounterTopBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         // Get the block state (to check facing and faucet state)
-        BlockState blockState = blockEntity.getCachedState();
+        BlockState blockState = entity.getCachedState();
 
         // Start rendering the model
         matrices.push();
 
         // Get the world and block position (this is important for correct rendering)
         ClientWorld world = MinecraftClient.getInstance().world;
-        BlockPos pos = blockEntity.getPos();
+        BlockPos pos = entity.getPos();
 
         // Get the BlockRenderManager instance
         BlockRenderManager blockRenderManager = MinecraftClient.getInstance().getBlockRenderManager();

@@ -8,5 +8,7 @@
   "block.indigooperationsfurnituremod.mangrove_sink": "Mangrove Sink",
   "block.indigooperationsfurnituremod.oak_sink": "Oak Sink",
   "block.indigooperationsfurnituremod.spruce_sink": "Spruce Sink",
-  "block.indigooperationsfurnituremod.warped_sink": "Warped Sink"
+  "block.indigooperationsfurnituremod.warped_sink": "Warped Sink",
+
+  "block.indigooperationsfurnituremod.oak_counter_top": "Oak Counter"
 }

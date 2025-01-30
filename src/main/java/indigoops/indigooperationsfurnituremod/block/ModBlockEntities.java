@@ -1,6 +1,7 @@
 package indigoops.indigooperationsfurnituremod.block;
 
 import indigoops.indigooperationsfurnituremod.IndigoOperationsFurnitureMod;
+import indigoops.indigooperationsfurnituremod.block.blocklogic.CounterTopBlockEntity;
 import indigoops.indigooperationsfurnituremod.block.blocklogic.SinkBlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
@@ -22,6 +23,11 @@ public class ModBlockEntities {
                             ModBlocks.OAK_SINK,
                             ModBlocks.SPRUCE_SINK,
                             ModBlocks.WARPED_SINK
+                    ).build(null));
+    public static final BlockEntityType<CounterTopBlockEntity> COUNTER_TOP_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(IndigoOperationsFurnitureMod.MOD_ID, "counter_top_block_entity"),
+                    BlockEntityType.Builder.create(CounterTopBlockEntity::new,
+                            ModBlocks.OAK_COUNTER_TOP
                     ).build(null));
 
     public static void registerModBlockEntities() {
