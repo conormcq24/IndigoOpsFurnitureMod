@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [128, 128],
 	"textures": {
-		"0": "indigooperationsfurnituremod:block/oak_counter_top",
-		"particle": "indigooperationsfurnituremod:block/oak_counter_top"
+		"0": "indigooperationsfurnituremod:block/oak_counter_top_north",
+		"particle": "indigooperationsfurnituremod:block/oak_counter_top_north"
 	},
 	"elements": [
 		{
