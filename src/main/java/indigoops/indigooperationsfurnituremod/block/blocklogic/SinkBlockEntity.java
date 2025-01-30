@@ -1,22 +1,27 @@
 package indigoops.indigooperationsfurnituremod.block.blocklogic;
-
 import indigoops.indigooperationsfurnituremod.block.ModBlockEntities;
 import indigoops.indigooperationsfurnituremod.screen.ModScreens;
+import indigoops.indigooperationsfurnituremod.util.ImplementedInventory;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtList;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 
-public class SinkBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, Inventory {
-    private final SimpleInventory inventory = new SimpleInventory(9);
+public class SinkBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
+    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(9, ItemStack.EMPTY);
 
     public SinkBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.SINK_BLOCK_ENTITY, pos, state);
@@ -31,50 +36,37 @@ public class SinkBlockEntity extends BlockEntity implements NamedScreenHandlerFa
     public Text getDisplayName() {
         return Text.translatable("block.indigooperationsfurnituremod.sink");
     }
-
-    // Implement Inventory methods
     @Override
-    public int size() {
-        return inventory.size();
+    public void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+        super.readNbt(nbt, registryLookup);
+        Inventories.readNbt(nbt, inventory, registryLookup);
     }
 
     @Override
-    public boolean isEmpty() {
-        return inventory.isEmpty();
+    public void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+        super.writeNbt(nbt, registryLookup);
+        Inventories.writeNbt(nbt, inventory, registryLookup);
     }
-
     @Override
-    public ItemStack getStack(int slot) {
-        return inventory.getStack(slot);
+    public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registryLookup) {
+        NbtCompound nbt = new NbtCompound();
+        writeNbt(nbt, registryLookup);
+        return nbt;
     }
-
-    @Override
-    public ItemStack removeStack(int slot, int amount) {
-        return inventory.removeStack(slot, amount);
-    }
-
-    @Override
-    public ItemStack removeStack(int slot) {
-        return inventory.removeStack(slot);
-    }
-
-    @Override
-    public void setStack(int slot, ItemStack stack) {
-        inventory.setStack(slot, stack);
-    }
-
-    @Override
-    public boolean canPlayerUse(PlayerEntity player) {
-        return inventory.canPlayerUse(player);
-    }
-
-    @Override
-    public void clear() {
-        inventory.clear();
-    }
-
     @Override
     public void markDirty() {
         super.markDirty();
+        if (world != null) {
+            world.updateListeners(pos, getCachedState(), getCachedState(), Block.NOTIFY_ALL);
+        }
+    }
+    @Override
+    public DefaultedList<ItemStack> getItems() {
+        return inventory;
+    }
+    @Override
+    public boolean canPlayerUse(PlayerEntity player) {
+        if (world == null) return false;
+        return world.getBlockEntity(pos) == this && player.squaredDistanceTo(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5) <= 64.0;
     }
 }
