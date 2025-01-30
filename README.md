@@ -4,7 +4,8 @@ This project is a minecraft fabric mod, it adds several furniture models to the 
 ## Table of Contents
 1. [Installation](#installation)
 2. [Supported Minecraft Versions](#supported-minecraft-versions)
-3. [Sinks](#sinks)
+3. [List of All Mod Blocks](#list-of-all-mod-blocks)
+   - [Sinks](#sinks)
 4. [Upcoming Features](#upcoming-features)
 
 ## Installation
@@ -27,7 +28,7 @@ This project is a minecraft fabric mod, it adds several furniture models to the 
 ## Supported Minecraft Versions
 - Mod Version 1.0.0 Supports Minecraft Version 1.21.1, with Fabric Loader 0.16.10
 
-### Added Blocks List
+### List of All Mod Blocks
 
 #### Sinks
 
