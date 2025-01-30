@@ -12,10 +12,17 @@ import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
 
 public class ModScreens {
-    public static final ScreenHandlerType<SinkScreenHandler> SINK_SCREEN_HANDLER =
-            Registry.register(Registries.SCREEN_HANDLER, Identifier.of("indigooperationsfurnituremod", "sink"),
-                    new ScreenHandlerType<>(SinkScreenHandler::new, FeatureSet.empty()));
+    // Removed static initialization to prevent it from running too early
+    public static ScreenHandlerType<SinkScreenHandler> SINK_SCREEN_HANDLER;
 
+    // Register screen handler during mod initialization
+    public static void register() {
+        SINK_SCREEN_HANDLER = Registry.register(
+                Registries.SCREEN_HANDLER,
+                Identifier.of("indigooperationsfurnituremod", "sink"),
+                new ScreenHandlerType<>(SinkScreenHandler::new, FeatureSet.empty())
+        );
+    }
 
     @Environment(EnvType.CLIENT)
     public static void registerScreens() {

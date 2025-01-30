@@ -37,9 +37,9 @@ public class SinkScreen extends HandledScreen<SinkScreenHandler> {
     @Override
     protected void drawForeground(DrawContext context, int mouseX, int mouseY) {
         // Draw the title (it will be drawn at the center as defined in `init()` method)
-        context.drawText(this.textRenderer, "Sink Inventory", 8, 7, 0, false);
+        context.drawText(this.textRenderer, "Sink Inventory", 8, 7, 4210752, false);
 
         // Draw the player's inventory label
-        context.drawText(this.textRenderer, "Player Inventory", 8, this.height - 200, 0, false);
+        context.drawText(this.textRenderer, "Player Inventory", 8, 40, 4210752, false);
     }
 }

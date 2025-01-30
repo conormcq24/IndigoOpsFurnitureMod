@@ -24,5 +24,6 @@ public class IndigoOperationsFurnitureMod implements ModInitializer {
 
 		ModBlocks.registerModBlocks();
 		ModBlockEntities.registerModBlockEntities();
+		ModScreens.register();
 	}
 }

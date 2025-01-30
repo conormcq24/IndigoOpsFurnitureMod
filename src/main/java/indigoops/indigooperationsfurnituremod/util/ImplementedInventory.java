@@ -52,4 +52,5 @@ public interface ImplementedInventory extends Inventory {
     default void clear() {
         getItems().clear();
     }
+
 }

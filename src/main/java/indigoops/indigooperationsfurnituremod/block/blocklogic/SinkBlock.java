@@ -1,6 +1,7 @@
 package indigoops.indigooperationsfurnituremod.block.blocklogic;
 
 import com.mojang.serialization.MapCodec;
+import indigoops.indigooperationsfurnituremod.util.ImplementedInventory;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.ChestBlockEntity;
@@ -32,6 +33,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import net.minecraft.world.explosion.Explosion;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class SinkBlock extends BlockWithEntity implements BlockEntityProvider {
@@ -63,6 +65,29 @@ public abstract class SinkBlock extends BlockWithEntity implements BlockEntityPr
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         Direction dir = ctx.getHorizontalPlayerFacing().getOpposite();
         return this.getDefaultState().with(FACING, dir).with(FAUCET, false);
+    }
+
+    @Override
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if (state.getBlock() != newState.getBlock()) {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof SinkBlockEntity) {
+                // Drop all items in the inventory
+                Inventory inventory = (Inventory) blockEntity;
+                for (int i = 0; i < inventory.size(); i++) {
+                    ItemStack stack = inventory.getStack(i);
+                    if (!stack.isEmpty()) {
+                        // Create an ItemEntity for each non-empty slot
+                        double x = pos.getX() + 0.5;
+                        double y = pos.getY() + 0.5;
+                        double z = pos.getZ() + 0.5;
+                        ItemEntity itemEntity = new ItemEntity(world, x, y, z, stack);
+                        world.spawnEntity(itemEntity);
+                    }
+                }
+            }
+        }
+        super.onStateReplaced(state, world, pos, newState, moved);
     }
 
     @Override

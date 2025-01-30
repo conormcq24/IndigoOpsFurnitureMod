@@ -20,4 +20,5 @@ public class AcaciaSinkBlock extends SinkBlock {
     protected MapCodec<? extends BlockWithEntity> getCodec() {
         return null;
     }
+
 }
