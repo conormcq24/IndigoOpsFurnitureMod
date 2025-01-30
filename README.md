@@ -12,7 +12,7 @@ This project is a minecraft fabric mod, it adds several furniture models to the 
 ### Option 1: Installing on Prism Launcher
 ##### (INSTRUCTIONS FOR MINECRAFT 1.21.1)
 > 1. Download the furniture mod jar from here: www.placeholder-link.com
-> 2. Download Prism Launcher from here: www.placeholder-link.com
+> 2. Download Prism Launcher from here, ensure you choose the correct OS for your device: https://prismlauncher.org/download/
 > 3. Finish installation process of prism launcher and log into minecraft account
 > 4. If you already have a compatible existing instance on the prism launcher simply select it and press folder in the right hand panel, then open the minecraft folder and the mods folder, here simply drop the furniture mod jar file into the mods folder. (Congrats you're done)
 > 5. If you have never used Prism and this is your first mod, press add instance in the top left corner of prism launcher, select minecraft version 1.21.1, and scroll down to choose your mod loader where you will select fabric, once you click fabric it will generate a list of versions to select, choose fabric 0.16.10 or higher for best results. I built the mod for 0.16.10.
