@@ -1,5 +1,7 @@
 package indigoops.indigooperationsfurnituremod.block.blocklogic;
 
+import com.mojang.serialization.MapCodec;
+import indigoops.indigooperationsfurnituremod.util.ImplementedInventory;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.ChestBlockEntity;
@@ -31,8 +33,10 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import net.minecraft.world.explosion.Explosion;
+import org.jetbrains.annotations.Nullable;
 
-public class SinkBlock extends Block {
+public abstract class SinkBlock extends BlockWithEntity implements BlockEntityProvider {
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     public static final BooleanProperty FAUCET = BooleanProperty.of("faucet_on");
 
@@ -47,14 +51,16 @@ public class SinkBlock extends Block {
                 .with(FAUCET, false));
     }
 
-    /* had to add append properties to properly register facing with the block */
+    @Nullable
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state){
+        return null;
+    }
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
         builder.add(FACING, FAUCET);
     }
-
-    /* this logic handles setting the facing to be the direction opposite of what the player is facing */
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         Direction dir = ctx.getHorizontalPlayerFacing().getOpposite();
@@ -62,8 +68,30 @@ public class SinkBlock extends Block {
     }
 
     @Override
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if (state.getBlock() != newState.getBlock()) {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof SinkBlockEntity) {
+                // Drop all items in the inventory
+                Inventory inventory = (Inventory) blockEntity;
+                for (int i = 0; i < inventory.size(); i++) {
+                    ItemStack stack = inventory.getStack(i);
+                    if (!stack.isEmpty()) {
+                        // Create an ItemEntity for each non-empty slot
+                        double x = pos.getX() + 0.5;
+                        double y = pos.getY() + 0.5;
+                        double z = pos.getZ() + 0.5;
+                        ItemEntity itemEntity = new ItemEntity(world, x, y, z, stack);
+                        world.spawnEntity(itemEntity);
+                    }
+                }
+            }
+        }
+        super.onStateReplaced(state, world, pos, newState, moved);
+    }
+
+    @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        // Always check for bucket-related interactions, regardless of sneaking
         ItemStack itemInHand = player.getStackInHand(Hand.MAIN_HAND);
         boolean isFaucetOn = state.get(FAUCET);
 
@@ -118,11 +146,15 @@ public class SinkBlock extends Block {
             return ActionResult.SUCCESS;
         }
 
-        return ActionResult.PASS; // Default if no action was performed
+        return ActionResult.PASS;
     }
 
     // Method to open the chest inventory
     private void openChest(World world, BlockPos pos, PlayerEntity player) {
-
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (blockEntity instanceof SinkBlockEntity) {
+            player.openHandledScreen((SinkBlockEntity) blockEntity);
+        }
     }
+
 }
