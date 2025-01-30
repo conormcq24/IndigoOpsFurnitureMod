@@ -26,7 +26,7 @@ import net.minecraft.world.explosion.Explosion;
 import org.jetbrains.annotations.Nullable;
 
 public class CounterTopBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
-    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(9, ItemStack.EMPTY);
+    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(27, ItemStack.EMPTY);
 
     public CounterTopBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.COUNTER_TOP_BLOCK_ENTITY, pos, state);

@@ -45,7 +45,7 @@ public class CounterTopBlockEntityRenderer implements BlockEntityRenderer<Counte
         Random random = Random.create();
 
         // I played with matrices for 4 hours and all I got was this stupid line of code
-        blockRenderManager.renderBlock(blockState, pos, world, matrices, vertexConsumer, false, random);
+        blockRenderManager.renderBlock(blockState, pos, world, matrices, vertexConsumer, true, random);
 
         // Restore the transformation stack
         matrices.pop();

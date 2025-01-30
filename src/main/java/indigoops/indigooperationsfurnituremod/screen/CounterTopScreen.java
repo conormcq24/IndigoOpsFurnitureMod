@@ -12,7 +12,7 @@ import net.minecraft.client.gui.DrawContext;
 
 public class CounterTopScreen extends HandledScreen<CounterTopScreenHandler> {
 
-    private static final Identifier TEXTURE = Identifier.of("indigooperationsfurnituremod", "textures/gui/sink.png");  // Path to your custom GUI texture
+    private static final Identifier TEXTURE = Identifier.of("minecraft", "textures/gui/container/shulker_box.png");  // Path to your custom GUI texture
 
     public CounterTopScreen(CounterTopScreenHandler handler, PlayerInventory playerInventory, Text title) {
         super(handler, playerInventory, title);
@@ -21,7 +21,7 @@ public class CounterTopScreen extends HandledScreen<CounterTopScreenHandler> {
     protected void init() {
         super.init();
         this.x = (this.width - 176) / 2; // Center texture horizontally
-        this.y = (this.height - 133) / 2; // Center texture vertically
+        this.y = (this.height - 166) / 2; // Center texture vertically
     }
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
@@ -32,7 +32,7 @@ public class CounterTopScreen extends HandledScreen<CounterTopScreenHandler> {
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
         // Bind the texture
         MinecraftClient.getInstance().getTextureManager().bindTexture(TEXTURE);
-        context.drawTexture(TEXTURE, this.x, this.y, 0, 0, 176, 133);
+        context.drawTexture(TEXTURE, this.x, this.y, 0, 0, 176, 166);
     }
     @Override
     protected void drawForeground(DrawContext context, int mouseX, int mouseY) {
@@ -40,6 +40,6 @@ public class CounterTopScreen extends HandledScreen<CounterTopScreenHandler> {
         context.drawText(this.textRenderer, "Counter Inventory", 8, 7, 4210752, false);
 
         // Draw the player's inventory label
-        context.drawText(this.textRenderer, "Player Inventory", 8, 40, 4210752, false);
+        context.drawText(this.textRenderer, "Player Inventory", 8, 73, 4210752, false);
     }
 }
