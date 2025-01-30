@@ -28,20 +28,20 @@ This project is a minecraft fabric mod, it adds several furniture models to the 
 ## Supported Minecraft Versions
 - Mod Version 1.0.0 Supports Minecraft Version 1.21.1, with Fabric Loader 0.16.10
 
-### List of All Mod Blocks
+## List of All Mod Blocks
 
-#### Sinks
+### Sinks
 
-##### Sink Model
+#### Sink Model
 
 <img src="https://imgur.com/zZniCKo.png" width="150" height="150" />
 
-##### Crafting Recipe
+#### Crafting Recipe
 >Output of sink type is dependent on the wood planks used. Ex: Oak planks will produce an oak sink. All five wooden planks must be of the same type
 
 <img src="https://imgur.com/kvqkX4N.png" width="150" height="150" />
 
-##### Description
+#### Description
 >
 >Sinks are a container block that function as a replacement for ugly 2x2 infinite water pools. Right-clicking on them opens the bottom cabinets for a 9 item chest inventory, Shifting and Right-clicking on them toggles the sink to full or empty. right-clicking on them with an empty bucket, fills your bucket. right-clicking with a full bucket empties your bucket.
 >- Acacia Sink
@@ -60,7 +60,7 @@ This project is a minecraft fabric mod, it adds several furniture models to the 
 ---
 ## Upcoming Features
 
-###### VERSION 1.0.0: The Kitchen
+#### VERSION 1.0.0: The Kitchen
 > The version with a focus on bringing your minecraft kitchen to life
 >- Countertops
 >- Hanging Cabinets
@@ -70,7 +70,7 @@ This project is a minecraft fabric mod, it adds several furniture models to the 
 >- Oven
 >
 >
-###### VERSION 1.1.0: The Bedroom
+#### VERSION 1.1.0: The Bedroom
 > The version that aspires to make your bedroom just a bit more cozy
 >- Better Beds (king and twin)
 >- Nightstands
