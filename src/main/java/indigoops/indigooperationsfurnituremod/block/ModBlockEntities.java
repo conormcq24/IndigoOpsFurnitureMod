@@ -27,7 +27,16 @@ public class ModBlockEntities {
     public static final BlockEntityType<CounterTopBlockEntity> COUNTER_TOP_BLOCK_ENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(IndigoOperationsFurnitureMod.MOD_ID, "counter_top_block_entity"),
                     BlockEntityType.Builder.create(CounterTopBlockEntity::new,
-                            ModBlocks.OAK_COUNTER_TOP
+                            ModBlocks.ACACIA_COUNTER_TOP,
+                            ModBlocks.BIRCH_COUNTER_TOP,
+                            ModBlocks.CHERRY_COUNTER_TOP,
+                            ModBlocks.CRIMSON_COUNTER_TOP,
+                            ModBlocks.DARK_OAK_COUNTER_TOP,
+                            ModBlocks.JUNGLE_COUNTER_TOP,
+                            ModBlocks.MANGROVE_COUNTER_TOP,
+                            ModBlocks.OAK_COUNTER_TOP,
+                            ModBlocks.SPRUCE_COUNTER_TOP,
+                            ModBlocks.WARPED_COUNTER_TOP
                     ).build(null));
 
     public static void registerModBlockEntities() {

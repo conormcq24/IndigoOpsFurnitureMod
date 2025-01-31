@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "!": {
-      "item": "minecraft:oak_planks"
+      "item": "minecraft:crimson_planks"
     },
     "#": {
       "item": "minecraft:chest"
@@ -19,6 +19,6 @@
   ],
   "result": {
     "count": 2,
-    "id": "indigooperationsfurnituremod:oak_counter_top"
+    "id": "indigooperationsfurnituremod:crimson_counter_top"
   }
 }

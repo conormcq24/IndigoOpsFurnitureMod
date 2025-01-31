@@ -26,7 +26,15 @@ public class ModBlocks {
 
     /* counter tops */
     public static final Block OAK_COUNTER_TOP = registerBlock("oak_counter_top", new OakCounterTopBlock());
-
+    public static final Block ACACIA_COUNTER_TOP = registerBlock("acacia_counter_top", new AcaciaCounterTopBlock());
+    public static final Block BIRCH_COUNTER_TOP = registerBlock("birch_counter_top", new BirchCounterTopBlock());
+    public static final Block CHERRY_COUNTER_TOP = registerBlock("cherry_counter_top", new CherryCounterTopBlock());
+    public static final Block CRIMSON_COUNTER_TOP = registerBlock("crimson_counter_top", new CrimsonCounterTopBlock());
+    public static final Block DARK_OAK_COUNTER_TOP = registerBlock("dark_oak_counter_top", new DarkOakCounterTopBlock());
+    public static final Block JUNGLE_COUNTER_TOP = registerBlock("jungle_counter_top", new JungleCounterTopBlock());
+    public static final Block MANGROVE_COUNTER_TOP = registerBlock("mangrove_counter_top", new MangroveCounterTopBlock());
+    public static final Block SPRUCE_COUNTER_TOP = registerBlock("spruce_counter_top", new SpruceCounterTopBlock());
+    public static final Block WARPED_COUNTER_TOP = registerBlock("warped_counter_top", new WarpedCounterTopBlock());
     private static Block registerBlock(String name, Block block){
         registerBlockItem(name, block);
         return Registry.register(Registries.BLOCK, Identifier.of(IndigoOperationsFurnitureMod.MOD_ID, name), block);
@@ -50,7 +58,17 @@ public class ModBlocks {
             entries.add(ModBlocks.OAK_SINK);
             entries.add(ModBlocks.SPRUCE_SINK);
             entries.add(ModBlocks.WARPED_SINK);
+
+            entries.add(ModBlocks.ACACIA_COUNTER_TOP);
+            entries.add(ModBlocks.BIRCH_COUNTER_TOP);
+            entries.add(ModBlocks.CHERRY_COUNTER_TOP);
+            entries.add(ModBlocks.CRIMSON_COUNTER_TOP);
+            entries.add(ModBlocks.DARK_OAK_COUNTER_TOP);
+            entries.add(ModBlocks.JUNGLE_COUNTER_TOP);
+            entries.add(ModBlocks.MANGROVE_COUNTER_TOP);
             entries.add(ModBlocks.OAK_COUNTER_TOP);
+            entries.add(ModBlocks.SPRUCE_COUNTER_TOP);
+            entries.add(ModBlocks.WARPED_COUNTER_TOP);
         });
     }
 }

@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "indigooperationsfurnituremod:block/cherry_counter_top_north",
+      "y": 0
+    },
+    "facing=east": {
+      "model": "indigooperationsfurnituremod:block/cherry_counter_top_east",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "indigooperationsfurnituremod:block/cherry_counter_top_south",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "indigooperationsfurnituremod:block/cherry_counter_top_west",
+      "y": 270
+    }
+  }
+}
