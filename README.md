@@ -6,6 +6,7 @@ This project is a minecraft fabric mod, it adds several furniture models to the 
 2. [Supported Minecraft Versions](#supported-minecraft-versions)
 3. [List of All Mod Blocks](#list-of-all-mod-blocks)
    - [Sinks](#sinks)
+   - [Counters](#counters)
 4. [Upcoming Features](#upcoming-features)
 
 ## Installation
@@ -32,14 +33,10 @@ This project is a minecraft fabric mod, it adds several furniture models to the 
 
 ### Sinks
 
-#### Sink Model
-
-<img src="https://imgur.com/zZniCKo.png" width="150" height="150" />
-
 #### Crafting Recipe
 >Output of sink type is dependent on the wood planks used. Ex: Oak planks will produce an oak sink. All five wooden planks must be of the same type
 
-<img src="https://imgur.com/kvqkX4N.png" width="150" height="150" />
+<img src="https://imgur.com/eej11VZ.png" width="242" height="134" />
 
 #### Description
 >
@@ -58,6 +55,33 @@ This project is a minecraft fabric mod, it adds several furniture models to the 
 > First Implemented Version 1.0.0
 
 ---
+
+### Counters
+
+#### Crafting Recipe
+>Output of counter type is dependent on the wood planks used. Ex: Oak planks will produce an oak counter. All five wooden planks must be of the same type
+
+<img src="https://imgur.com/7rQZnTl.png" width="242" height="134" />
+
+#### Description
+>
+>Counters are a new container block meant to compliment the sink, it has a 27 space storage system and functions exactly like a single chest. It looks beautiful in a kitchen.
+>- Acacia Counter
+>- Birch Counter
+>- Cherry Counter
+>- Crimson Counter
+>- Dark Oak Counter
+>- Jungle Counter
+>- Mangrove Counter
+>- Oak Counter
+>- Spruce Counter
+>- Warped Counter
+>  
+> First Implemented Version 1.0.0
+
+---
+
+
 ## Upcoming Features
 
 #### VERSION 1.0.0: The Kitchen
