@@ -147,7 +147,7 @@ public class TableBlock extends Block {
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
         if (!world.isClient) {
-            Direction facing = state.get(FACING); // Get the player's facing direction
+            Direction facing = state.get(FACING);
 
             // Rotate the table parts based on the facing direction
             switch (facing) {
@@ -202,10 +202,8 @@ public class TableBlock extends Block {
             TablePart part = state.get(PART);
             Direction facing = state.get(FACING);
 
-            // Define the array of BlockPos for all four parts of the table, based on the facing direction and part
             BlockPos[] positionsToBreak = getPositionsForFacing(part, pos, facing);
 
-            // Loop through all the positions to break the corresponding table parts
             for (BlockPos blockPos : positionsToBreak) {
                 breakPart(world, blockPos);
             }
@@ -225,7 +223,7 @@ public class TableBlock extends Block {
             case WEST:
                 return getPositionsForFacingWest(part, pos);
             default:
-                return new BlockPos[] { pos }; // default case for any unknown directions
+                return new BlockPos[] { pos };
         }
     }
 
