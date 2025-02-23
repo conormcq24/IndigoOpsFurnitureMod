@@ -4,6 +4,7 @@ import indigoops.indigooperationsfurnituremod.IndigoOperationsFurnitureMod;
 import indigoops.indigooperationsfurnituremod.block.blocklogic.*;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
@@ -14,6 +15,7 @@ import net.minecraft.util.Identifier;
 public class ModBlocks {
     /* sinks */
     public static final Block ACACIA_SINK = registerBlock("acacia_sink", new AcaciaSinkBlock());
+    public static final Block TABLE = registerBlock("table", new TableBlock(Block.Settings.copy(Blocks.OAK_PLANKS)));
     public static final Block BIRCH_SINK = registerBlock("birch_sink", new BirchSinkBlock());
     public static final Block CHERRY_SINK = registerBlock("cherry_sink", new CherrySinkBlock());
     public static final Block CRIMSON_SINK = registerBlock("crimson_sink", new CrimsonSinkBlock());
@@ -48,6 +50,7 @@ public class ModBlocks {
     public static void registerModBlocks(){
         IndigoOperationsFurnitureMod.LOGGER.info("Registering Mod Blocks for " + IndigoOperationsFurnitureMod.MOD_ID);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> {
+
             entries.add(ModBlocks.ACACIA_SINK);
             entries.add(ModBlocks.BIRCH_SINK);
             entries.add(ModBlocks.CHERRY_SINK);
@@ -69,6 +72,8 @@ public class ModBlocks {
             entries.add(ModBlocks.OAK_COUNTER_TOP);
             entries.add(ModBlocks.SPRUCE_COUNTER_TOP);
             entries.add(ModBlocks.WARPED_COUNTER_TOP);
+
+            entries.add(ModBlocks.TABLE);
         });
     }
 }

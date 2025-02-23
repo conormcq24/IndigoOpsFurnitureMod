@@ -19,5 +19,7 @@
   "block.indigooperationsfurnituremod.mangrove_counter_top": "Mangrove Counter",
   "block.indigooperationsfurnituremod.oak_counter_top": "Oak Counter",
   "block.indigooperationsfurnituremod.spruce_counter_top": "Spruce Counter",
-  "block.indigooperationsfurnituremod.warped_counter_top": "Warped Counter"
+  "block.indigooperationsfurnituremod.warped_counter_top": "Warped Counter",
+
+  "block.indigooperationsfurnituremod.table": "Table"
 }

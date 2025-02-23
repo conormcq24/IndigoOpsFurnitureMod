@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "part=top_left": { "model": "indigooperationsfurnituremod:block/top_left_table" },
+    "part=top_right": { "model": "indigooperationsfurnituremod:block/top_right_table" },
+    "part=bottom_left": { "model": "indigooperationsfurnituremod:block/bottom_left_table" },
+    "part=bottom_right": { "model": "indigooperationsfurnituremod:block/bottom_right_table" }
+  }
+}
