@@ -13,7 +13,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModBlocks {
-    /* sinks */
+    /* sinks test */
     public static final Block ACACIA_SINK = registerBlock("acacia_sink", new AcaciaSinkBlock());
     public static final Block TABLE = registerBlock("table", new TableBlock(Block.Settings.copy(Blocks.OAK_PLANKS)));
     public static final Block BIRCH_SINK = registerBlock("birch_sink", new BirchSinkBlock());
