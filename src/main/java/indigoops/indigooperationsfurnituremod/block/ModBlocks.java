@@ -13,9 +13,8 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModBlocks {
-    /* sinks test */
+    /* sinks */
     public static final Block ACACIA_SINK = registerBlock("acacia_sink", new AcaciaSinkBlock());
-    public static final Block TABLE = registerBlock("table", new TableBlock(Block.Settings.copy(Blocks.OAK_PLANKS)));
     public static final Block BIRCH_SINK = registerBlock("birch_sink", new BirchSinkBlock());
     public static final Block CHERRY_SINK = registerBlock("cherry_sink", new CherrySinkBlock());
     public static final Block CRIMSON_SINK = registerBlock("crimson_sink", new CrimsonSinkBlock());
@@ -37,6 +36,14 @@ public class ModBlocks {
     public static final Block MANGROVE_COUNTER_TOP = registerBlock("mangrove_counter_top", new MangroveCounterTopBlock());
     public static final Block SPRUCE_COUNTER_TOP = registerBlock("spruce_counter_top", new SpruceCounterTopBlock());
     public static final Block WARPED_COUNTER_TOP = registerBlock("warped_counter_top", new WarpedCounterTopBlock());
+
+    /* tables */
+    public static final Block ACACIA_TABLE = registerTableBlock("acacia_table", TableBlock.TableWood.ACACIA, TableBlock.TableCloth.NONE);
+
+    private static Block registerTableBlock(String name, TableBlock.TableWood woodType, TableBlock.TableCloth clothType) {
+        return registerBlock(name, new TableBlock(woodType, clothType));
+    }
+
     private static Block registerBlock(String name, Block block){
         registerBlockItem(name, block);
         return Registry.register(Registries.BLOCK, Identifier.of(IndigoOperationsFurnitureMod.MOD_ID, name), block);
@@ -73,7 +80,7 @@ public class ModBlocks {
             entries.add(ModBlocks.SPRUCE_COUNTER_TOP);
             entries.add(ModBlocks.WARPED_COUNTER_TOP);
 
-            entries.add(ModBlocks.TABLE);
+            entries.add(ModBlocks.ACACIA_TABLE);
         });
     }
 }

@@ -6,6 +6,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.StringIdentifiable;
@@ -88,16 +89,28 @@ public class TableBlock extends Block {
 
 
     public static final EnumProperty<TablePart> PART = EnumProperty.of("part", TablePart.class);
+    public static final EnumProperty<TableCloth> CLOTH_TYPE = EnumProperty.of("cloth", TableCloth.class);
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
+    public static final BooleanProperty HAS_CLOTH = BooleanProperty.of("has_cloth");
+    private final TableWood woodType;
+    private final TableCloth clothType;
+    public static final EnumProperty<TableWood> WOOD_TYPE = EnumProperty.of("wood_type", TableWood.class);
 
-    public TableBlock(Settings settings) {
-        super(settings.nonOpaque());
-        setDefaultState(getStateManager().getDefaultState().with(PART, TablePart.TOP_LEFT).with(FACING, Direction.NORTH));
+    public TableBlock(TableWood woodType, TableCloth clothType) {
+        super(Settings.copy(Blocks.OAK_PLANKS).nonOpaque());
+        this.woodType = woodType;
+        this.clothType = clothType;
+        setDefaultState(getStateManager().getDefaultState()
+                .with(PART, TablePart.TOP_LEFT)
+                .with(FACING, Direction.NORTH)
+                .with(WOOD_TYPE, woodType)
+                .with(CLOTH_TYPE, TableCloth.NONE)
+                .with(HAS_CLOTH, false));
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(PART, FACING);
+        builder.add(PART, FACING, WOOD_TYPE, CLOTH_TYPE, HAS_CLOTH);
     }
 
     @Nullable
@@ -107,16 +120,15 @@ public class TableBlock extends Block {
         World world = ctx.getWorld();
         Direction facing = ctx.getHorizontalPlayerFacing();
 
-        // Check if we have space for all four blocks using the facing direction
+        // if statement for placement validation, do nothing if not valid
         if (canPlaceTable(world, pos, facing)) {
-            return getDefaultState().with(PART, TablePart.BOTTOM_LEFT).with(FACING, facing);
+            return getDefaultState().with(PART, TablePart.BOTTOM_LEFT).with(FACING, facing).with(CLOTH_TYPE, clothType);
         }
 
         return null;
     }
 
     private boolean canPlaceTable(World world, BlockPos pos, Direction facing) {
-        // Check if the four parts of the table can be placed based on the facing direction
         switch (facing) {
             case NORTH:
                 return world.getBlockState(pos).isAir()
