@@ -5,6 +5,7 @@ import indigoops.indigooperationsfurnituremod.block.ModBlocks;
 import indigoops.indigooperationsfurnituremod.block.blocklogic.CounterTopBlockEntityRenderer;
 import indigoops.indigooperationsfurnituremod.block.blocklogic.SinkBlockEntityRenderer;
 import indigoops.indigooperationsfurnituremod.block.blocklogic.SinkScreenHandler;
+import indigoops.indigooperationsfurnituremod.block.blocklogic.TableBlock;
 import indigoops.indigooperationsfurnituremod.screen.ModScreens;
 import indigoops.indigooperationsfurnituremod.screen.SinkScreen;
 import indigoops.indigooperationsfurnituremod.screen.CounterTopScreen;
@@ -35,13 +36,36 @@ public class IndigoOperationsFurnitureModClient implements ClientModInitializer 
 
         // handle transparency for cloth, and tint for wood on table objects
         BlockRenderLayerMap.INSTANCE.putBlock(ACACIA_TABLE, RenderLayer.getCutout());
+        // In IndigoOperationsFurnitureModClient.java
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> {
             if (tintIndex == 0) {
                 return 0xb05c34; // Tint for wood (#0)
             } else if (tintIndex == 1) {
-                return 0xb22222; // Tint for cloth (#1) (Change to your desired color)
+                if (state.contains(TableBlock.CLOTH_TYPE) && state.get(TableBlock.HAS_CLOTH)) {
+                    TableBlock.TableCloth clothType = state.get(TableBlock.CLOTH_TYPE);
+                    switch (clothType) {
+                        case WHITE: return 0xFFFFFF;
+                        case LIGHTGRAY: return 0xABABAB;
+                        case GRAY: return 0x8A8A8A;
+                        case BLACK: return 0x1D1D1D;
+                        case BROWN: return 0x724728;
+                        case RED: return 0xB02E26;
+                        case ORANGE: return 0xF9801D;
+                        case YELLOW: return 0xFED83D;
+                        case LIME: return 0x80C71F;
+                        case GREEN: return 0x5D7C15;
+                        case CYAN: return 0x169C9C;
+                        case LIGHTBLUE: return 0x3AB3DA;
+                        case BLUE: return 0x3C44AA;
+                        case PURPLE: return 0x8932B8;
+                        case MAGENTA: return 0xC74EBD;
+                        case PINK: return 0xF38BAA;
+                        case NONE:
+                        default: return -1; // No tint applied
+                    }
+                }
             }
-            return -1; // No tint applied
-        }, ACACIA_TABLE);
+            return -1; // Default: no tint applied
+        }, ACACIA_TABLE); // Make sure to register this for ALL your table blocks
     }
 }
