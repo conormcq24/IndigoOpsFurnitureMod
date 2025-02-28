@@ -18,6 +18,9 @@ import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
@@ -456,5 +459,80 @@ public class TableBlock extends Block {
             case NONE:
             default: return null;
         }
+    }
+
+    protected static final VoxelShape TABLE_TOP = Block.createCuboidShape(0, 13, 0, 16, 16, 16);
+    protected static final VoxelShape BOTTOM_LEFT_LEG = Block.createCuboidShape(1, 0, 12, 4, 13, 15);
+    protected static final VoxelShape BOTTOM_RIGHT_LEG = Block.createCuboidShape(12, 0, 12, 15, 13, 15);
+    protected static final VoxelShape TOP_LEFT_LEG = Block.createCuboidShape(1, 0, 1, 4, 13, 4);
+    protected static final VoxelShape TOP_RIGHT_LEG = Block.createCuboidShape(12, 0, 1, 15, 13, 4);
+
+    // North-facing shapes
+    protected static final VoxelShape NORTH_BOTTOM_LEFT_SHAPE = VoxelShapes.union(TABLE_TOP, BOTTOM_LEFT_LEG);
+    protected static final VoxelShape NORTH_BOTTOM_RIGHT_SHAPE = VoxelShapes.union(TABLE_TOP, BOTTOM_RIGHT_LEG);
+    protected static final VoxelShape NORTH_TOP_LEFT_SHAPE = VoxelShapes.union(TABLE_TOP, TOP_LEFT_LEG);
+    protected static final VoxelShape NORTH_TOP_RIGHT_SHAPE = VoxelShapes.union(TABLE_TOP, TOP_RIGHT_LEG);
+
+    // East-facing shapes
+    protected static final VoxelShape EAST_BOTTOM_LEFT_SHAPE = VoxelShapes.union(TABLE_TOP, BOTTOM_RIGHT_LEG);
+    protected static final VoxelShape EAST_BOTTOM_RIGHT_SHAPE = VoxelShapes.union(TABLE_TOP, TOP_RIGHT_LEG);
+    protected static final VoxelShape EAST_TOP_LEFT_SHAPE = VoxelShapes.union(TABLE_TOP, BOTTOM_LEFT_LEG);
+    protected static final VoxelShape EAST_TOP_RIGHT_SHAPE = VoxelShapes.union(TABLE_TOP, TOP_LEFT_LEG);
+
+    // South-facing shapes
+    protected static final VoxelShape SOUTH_BOTTOM_LEFT_SHAPE = VoxelShapes.union(TABLE_TOP, TOP_RIGHT_LEG);
+    protected static final VoxelShape SOUTH_BOTTOM_RIGHT_SHAPE = VoxelShapes.union(TABLE_TOP, TOP_LEFT_LEG);
+    protected static final VoxelShape SOUTH_TOP_LEFT_SHAPE = VoxelShapes.union(TABLE_TOP, BOTTOM_RIGHT_LEG);
+    protected static final VoxelShape SOUTH_TOP_RIGHT_SHAPE = VoxelShapes.union(TABLE_TOP, BOTTOM_LEFT_LEG);
+
+    // West-facing shapes
+    protected static final VoxelShape WEST_BOTTOM_LEFT_SHAPE = VoxelShapes.union(TABLE_TOP, TOP_LEFT_LEG);
+    protected static final VoxelShape WEST_BOTTOM_RIGHT_SHAPE = VoxelShapes.union(TABLE_TOP, BOTTOM_LEFT_LEG);
+    protected static final VoxelShape WEST_TOP_LEFT_SHAPE = VoxelShapes.union(TABLE_TOP, TOP_RIGHT_LEG);
+    protected static final VoxelShape WEST_TOP_RIGHT_SHAPE = VoxelShapes.union(TABLE_TOP, BOTTOM_RIGHT_LEG);
+
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        TablePart part = state.get(PART);
+        Direction direction = state.get(FACING);
+
+        return switch (direction) {
+            case NORTH -> switch (part) {
+                case BOTTOM_LEFT -> NORTH_BOTTOM_LEFT_SHAPE;
+                case BOTTOM_RIGHT -> NORTH_BOTTOM_RIGHT_SHAPE;
+                case TOP_LEFT -> NORTH_TOP_LEFT_SHAPE;
+                case TOP_RIGHT -> NORTH_TOP_RIGHT_SHAPE;
+            };
+            case EAST -> switch (part) {
+                case BOTTOM_LEFT -> EAST_BOTTOM_LEFT_SHAPE;
+                case BOTTOM_RIGHT -> EAST_BOTTOM_RIGHT_SHAPE;
+                case TOP_LEFT -> EAST_TOP_LEFT_SHAPE;
+                case TOP_RIGHT -> EAST_TOP_RIGHT_SHAPE;
+            };
+            case SOUTH -> switch (part) {
+                case BOTTOM_LEFT -> SOUTH_BOTTOM_LEFT_SHAPE;
+                case BOTTOM_RIGHT -> SOUTH_BOTTOM_RIGHT_SHAPE;
+                case TOP_LEFT -> SOUTH_TOP_LEFT_SHAPE;
+                case TOP_RIGHT -> SOUTH_TOP_RIGHT_SHAPE;
+            };
+            case WEST -> switch (part) {
+                case BOTTOM_LEFT -> WEST_BOTTOM_LEFT_SHAPE;
+                case BOTTOM_RIGHT -> WEST_BOTTOM_RIGHT_SHAPE;
+                case TOP_LEFT -> WEST_TOP_LEFT_SHAPE;
+                case TOP_RIGHT -> WEST_TOP_RIGHT_SHAPE;
+            };
+            default -> NORTH_BOTTOM_LEFT_SHAPE;
+        };
+    }
+
+    // Also override these methods to ensure consistent collision behavior
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return getOutlineShape(state, world, pos, context);
+    }
+
+    @Override
+    public VoxelShape getCullingShape(BlockState state, BlockView world, BlockPos pos) {
+        return getOutlineShape(state, world, pos, ShapeContext.absent());
     }
 }

@@ -18,6 +18,7 @@ import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
+import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.resource.featuretoggle.FeatureSet;
@@ -58,6 +59,8 @@ public class IndigoOperationsFurnitureModClient implements ClientModInitializer 
         registerTableColorProvider(OAK_TABLE, 0xc49c64);
         registerTableColorProvider(SPRUCE_TABLE, 0x7c5c34);
         registerTableColorProvider(WARPED_TABLE, 0x3c8c8c);
+
+        registerItemColorProviders();
     }
 
     private void registerTableColorProvider(Block tableBlock, int woodColor) {
@@ -94,5 +97,26 @@ public class IndigoOperationsFurnitureModClient implements ClientModInitializer 
             case NONE:
             default: return -1; // No tint applied
         }
+    }
+    private void registerItemColorProviders() {
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
+            if (tintIndex == 0) {
+                Item item = stack.getItem();
+                // Add 0xFF000000 to ensure full alpha
+                if (item == ACACIA_TABLE.asItem()) return 0xFF000000 | 0xb05c34;
+                if (item == BIRCH_TABLE.asItem()) return 0xFF000000 | 0xd4c484;
+                if (item == CHERRY_TABLE.asItem()) return 0xFF000000 | 0xdc9c94;
+                if (item == CRIMSON_TABLE.asItem()) return 0xFF000000 | 0x843c5c;
+                if (item == DARK_OAK_TABLE.asItem()) return 0xFF000000 | 0x4c341c;
+                if (item == JUNGLE_TABLE.asItem()) return 0xFF000000 | 0xb8885c;
+                if (item == MANGROVE_TABLE.asItem()) return 0xFF000000 | 0x8c4c3c;
+                if (item == OAK_TABLE.asItem()) return 0xFF000000 | 0xc49c64;
+                if (item == SPRUCE_TABLE.asItem()) return 0xFF000000 | 0x7c5c34;
+                if (item == WARPED_TABLE.asItem()) return 0xFF000000 | 0x3c8c8c;
+            }
+            return -1;
+        }, ACACIA_TABLE.asItem(), BIRCH_TABLE.asItem(), CHERRY_TABLE.asItem(), CRIMSON_TABLE.asItem(),
+                DARK_OAK_TABLE.asItem(), JUNGLE_TABLE.asItem(), MANGROVE_TABLE.asItem(), OAK_TABLE.asItem(), SPRUCE_TABLE.asItem(),
+                    WARPED_TABLE.asItem());
     }
 }
