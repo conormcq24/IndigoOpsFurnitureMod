@@ -1,0 +1,127 @@
+{
+  "variants": {
+    "facing=north,part=bottom_left,has_cloth=false": {
+      "model":  "indigooperationsfurnituremod:block/bottom_left_table"
+    },
+    "facing=north,part=bottom_right,has_cloth=false": {
+      "model":  "indigooperationsfurnituremod:block/bottom_right_table"
+    },
+    "facing=north,part=top_left,has_cloth=false": {
+      "model":  "indigooperationsfurnituremod:block/top_left_table"
+    },
+    "facing=north,part=top_right,has_cloth=false": {
+      "model":  "indigooperationsfurnituremod:block/top_right_table"
+    },
+    "facing=north,part=bottom_left,has_cloth=true": {
+      "model":  "indigooperationsfurnituremod:block/bottom_left_table_cloth"
+    },
+    "facing=north,part=bottom_right,has_cloth=true": {
+      "model":  "indigooperationsfurnituremod:block/bottom_right_table_cloth"
+    },
+    "facing=north,part=top_left,has_cloth=true": {
+      "model":  "indigooperationsfurnituremod:block/top_left_table_cloth"
+    },
+    "facing=north,part=top_right,has_cloth=true": {
+      "model":  "indigooperationsfurnituremod:block/top_right_table_cloth"
+    },
+
+    "facing=east,part=bottom_left,has_cloth=false": {
+      "model":  "indigooperationsfurnituremod:block/bottom_left_table",
+      "y": 90
+    },
+    "facing=east,part=bottom_right,has_cloth=false": {
+      "model":  "indigooperationsfurnituremod:block/bottom_right_table",
+      "y": 90
+    },
+    "facing=east,part=top_left,has_cloth=false": {
+      "model":  "indigooperationsfurnituremod:block/top_left_table",
+      "y": 90
+    },
+    "facing=east,part=top_right,has_cloth=false": {
+      "model":  "indigooperationsfurnituremod:block/top_right_table",
+      "y": 90
+    },
+    "facing=east,part=bottom_left,has_cloth=true": {
+      "model":  "indigooperationsfurnituremod:block/bottom_left_table_cloth",
+      "y": 90
+    },
+    "facing=east,part=bottom_right,has_cloth=true": {
+      "model":  "indigooperationsfurnituremod:block/bottom_right_table_cloth",
+      "y": 90
+    },
+    "facing=east,part=top_left,has_cloth=true": {
+      "model":  "indigooperationsfurnituremod:block/top_left_table_cloth",
+      "y": 90
+    },
+    "facing=east,part=top_right,has_cloth=true": {
+      "model":  "indigooperationsfurnituremod:block/top_right_table_cloth",
+      "y": 90
+    },
+
+    "facing=south,part=bottom_left,has_cloth=false": {
+      "model":  "indigooperationsfurnituremod:block/bottom_left_table",
+      "y": 180
+    },
+    "facing=south,part=bottom_right,has_cloth=false": {
+      "model":  "indigooperationsfurnituremod:block/bottom_right_table",
+      "y": 180
+    },
+    "facing=south,part=top_left,has_cloth=false": {
+      "model":  "indigooperationsfurnituremod:block/top_left_table",
+      "y": 180
+    },
+    "facing=south,part=top_right,has_cloth=false": {
+      "model":  "indigooperationsfurnituremod:block/top_right_table",
+      "y": 180
+    },
+    "facing=south,part=bottom_left,has_cloth=true": {
+      "model":  "indigooperationsfurnituremod:block/bottom_left_table_cloth",
+      "y": 180
+    },
+    "facing=south,part=bottom_right,has_cloth=true": {
+      "model":  "indigooperationsfurnituremod:block/bottom_right_table_cloth",
+      "y": 180
+    },
+    "facing=south,part=top_left,has_cloth=true": {
+      "model":  "indigooperationsfurnituremod:block/top_left_table_cloth",
+      "y": 180
+    },
+    "facing=south,part=top_right,has_cloth=true": {
+      "model":  "indigooperationsfurnituremod:block/top_right_table_cloth",
+      "y": 180
+    },
+
+    "facing=west,part=bottom_left,has_cloth=false": {
+      "model":  "indigooperationsfurnituremod:block/bottom_left_table",
+      "y": 270
+    },
+    "facing=west,part=bottom_right,has_cloth=false": {
+      "model":  "indigooperationsfurnituremod:block/bottom_right_table",
+      "y": 270
+    },
+    "facing=west,part=top_left,has_cloth=false": {
+      "model":  "indigooperationsfurnituremod:block/top_left_table",
+      "y": 270
+    },
+    "facing=west,part=top_right,has_cloth=false": {
+      "model":  "indigooperationsfurnituremod:block/top_right_table",
+      "y": 270
+    },
+    "facing=west,part=bottom_left,has_cloth=true": {
+      "model":  "indigooperationsfurnituremod:block/bottom_left_table_cloth",
+      "y": 270
+    },
+    "facing=west,part=bottom_right,has_cloth=true": {
+      "model":  "indigooperationsfurnituremod:block/bottom_right_table_cloth",
+      "y": 270
+    },
+    "facing=west,part=top_left,has_cloth=true": {
+      "model":  "indigooperationsfurnituremod:block/top_left_table_cloth",
+      "y": 270
+    },
+    "facing=west,part=top_right,has_cloth=true": {
+      "model":  "indigooperationsfurnituremod:block/top_right_table_cloth",
+      "y": 270
+    }
+  }
+}

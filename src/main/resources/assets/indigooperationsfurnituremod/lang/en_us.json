@@ -21,5 +21,14 @@
   "block.indigooperationsfurnituremod.spruce_counter_top": "Spruce Counter",
   "block.indigooperationsfurnituremod.warped_counter_top": "Warped Counter",
 
-  "block.indigooperationsfurnituremod.acacia_table": "Acacia Table"
+  "block.indigooperationsfurnituremod.acacia_table": "Acacia Table",
+  "block.indigooperationsfurnituremod.birch_table": "Birch Table",
+  "block.indigooperationsfurnituremod.cherry_table": "Cherry Table",
+  "block.indigooperationsfurnituremod.crimson_table": "Crimson Table",
+  "block.indigooperationsfurnituremod.dark_oak_table": "Dark Oak Table",
+  "block.indigooperationsfurnituremod.jungle_table": "Jungle Table",
+  "block.indigooperationsfurnituremod.mangrove_table": "Mangrove Table",
+  "block.indigooperationsfurnituremod.oak_table": "Oak Table",
+  "block.indigooperationsfurnituremod.spruce_table": "Spruce Table",
+  "block.indigooperationsfurnituremod.warped_table": "Warped Table"
 }

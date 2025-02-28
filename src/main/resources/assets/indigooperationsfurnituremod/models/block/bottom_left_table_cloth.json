@@ -4,12 +4,51 @@
 	"textures": {
 		"0": "indigooperationsfurnituremod:block/bottom_left_table",
 		"1": "indigooperationsfurnituremod:block/bottom_left_table_cloth",
+		"2": "indigooperationsfurnituremod:block/bottom_left_table_cloth_outline",
 		"particle": "indigooperationsfurnituremod:block/bottom_left_table"
 	},
 	"elements": [
 		{
 			"from": [0, 16, 0],
 			"to": [16, 16.01, 16],
+			"faces": {
+				"north": {"uv": [4.5, 3, 8.5, 3.25], "texture": "#2", "alpha": true},
+				"east": {"uv": [4.5, 3.25, 8.5, 3.5], "texture": "#2", "alpha": true},
+				"south": {"uv": [4.5, 3.5, 8.5, 3.75], "texture": "#2", "alpha": true},
+				"west": {"uv": [4.5, 3.75, 8.5, 4], "texture": "#2", "alpha": true},
+				"up": {"uv": [4, 4, 0, 0], "texture": "#2", "alpha": true},
+				"down": {"uv": [4, 4, 0, 8], "texture": "#2", "alpha": true}
+			}
+		},
+		{
+			"from": [0, 13, 16],
+			"to": [16, 16, 16.01],
+			"rotation": {"angle": 0, "axis": "y", "origin": [14, 14, 16]},
+			"faces": {
+				"north": {"uv": [4, 1.5, 8, 2.25], "texture": "#2", "alpha": true},
+				"east": {"uv": [5, 4.5, 5.25, 5.25], "texture": "#2", "alpha": true},
+				"south": {"uv": [4, 2.25, 8, 3], "texture": "#2", "alpha": true},
+				"west": {"uv": [4.5, 5.25, 4.75, 6], "texture": "#2", "alpha": true},
+				"up": {"uv": [8.5, 4.25, 4.5, 4], "texture": "#2", "alpha": true},
+				"down": {"uv": [8.5, 4.25, 4.5, 4.5], "texture": "#2", "alpha": true}
+			}
+		},
+		{
+			"from": [-0.01, 13, 0],
+			"to": [0, 16, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 13, 0]},
+			"faces": {
+				"north": {"uv": [4.5, 4.5, 4.75, 5.25], "texture": "#2", "alpha": true},
+				"east": {"uv": [4, 0, 8, 0.75], "texture": "#2", "alpha": true},
+				"south": {"uv": [4.75, 4.5, 5, 5.25], "texture": "#2", "alpha": true},
+				"west": {"uv": [4, 0.75, 8, 1.5], "texture": "#2", "alpha": true},
+				"up": {"uv": [4.25, 7, 4, 3], "texture": "#2", "alpha": true},
+				"down": {"uv": [4.5, 3, 4.25, 7], "texture": "#2", "alpha": true}
+			}
+		},
+		{
+			"from": [0, 16.01, 0],
+			"to": [16, 16.02, 16],
 			"faces": {
 				"north": {"uv": [4.5, 3, 8.5, 3.25], "texture": "#1", "alpha": true, "tintindex": 1},
 				"east": {"uv": [4.5, 3.25, 8.5, 3.5], "texture": "#1", "alpha": true, "tintindex": 1},
@@ -20,8 +59,8 @@
 			}
 		},
 		{
-			"from": [0, 13, 16],
-			"to": [16, 16, 16.01],
+			"from": [0, 13, 16.01],
+			"to": [16, 16, 16.02],
 			"rotation": {"angle": 0, "axis": "y", "origin": [0, 13, 16]},
 			"faces": {
 				"north": {"uv": [4, 1.5, 8, 2.25], "texture": "#1", "alpha": true, "tintindex": 1},
@@ -33,8 +72,8 @@
 			}
 		},
 		{
-			"from": [-0.01, 13, 0],
-			"to": [0, 16, 16],
+			"from": [-0.02, 13, 0],
+			"to": [-0.01, 16, 16],
 			"rotation": {"angle": 0, "axis": "y", "origin": [-1, 14, 0]},
 			"faces": {
 				"north": {"uv": [4.5, 4.5, 4.75, 5.25], "texture": "#1", "alpha": true, "tintindex": 1},
@@ -73,16 +112,22 @@
 	],
 	"groups": [
 		{
-			"name": "Cloth",
+			"name": "Cloth Outline",
 			"origin": [0, 0, 0],
 			"color": 0,
 			"children": [0, 1, 2]
 		},
 		{
+			"name": "Cloth",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"children": [3, 4, 5]
+		},
+		{
 			"name": "Table",
 			"origin": [1, 0, 12],
 			"color": 0,
-			"children": [3, 4]
+			"children": [6, 7]
 		}
 	]
 }

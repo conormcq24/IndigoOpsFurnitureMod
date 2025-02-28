@@ -39,6 +39,15 @@ public class ModBlocks {
 
     /* tables */
     public static final Block ACACIA_TABLE = registerTableBlock("acacia_table", TableBlock.TableWood.ACACIA, TableBlock.TableCloth.NONE);
+    public static final Block BIRCH_TABLE = registerTableBlock("birch_table", TableBlock.TableWood.BIRCH, TableBlock.TableCloth.NONE);
+    public static final Block CHERRY_TABLE = registerTableBlock("cherry_table", TableBlock.TableWood.CHERRY, TableBlock.TableCloth.NONE);
+    public static final Block CRIMSON_TABLE = registerTableBlock("crimson_table", TableBlock.TableWood.CRIMSON, TableBlock.TableCloth.NONE);
+    public static final Block DARK_OAK_TABLE = registerTableBlock("dark_oak_table", TableBlock.TableWood.DARKOAK, TableBlock.TableCloth.NONE);
+    public static final Block JUNGLE_TABLE = registerTableBlock("jungle_table", TableBlock.TableWood.JUNGLE, TableBlock.TableCloth.NONE);
+    public static final Block MANGROVE_TABLE = registerTableBlock("mangrove_table", TableBlock.TableWood.MANGROVE, TableBlock.TableCloth.NONE);
+    public static final Block OAK_TABLE = registerTableBlock("oak_table", TableBlock.TableWood.OAK, TableBlock.TableCloth.NONE);
+    public static final Block SPRUCE_TABLE = registerTableBlock("spruce_table", TableBlock.TableWood.SPRUCE, TableBlock.TableCloth.NONE);
+    public static final Block WARPED_TABLE = registerTableBlock("warped_table", TableBlock.TableWood.WARPED, TableBlock.TableCloth.NONE);
 
     private static Block registerTableBlock(String name, TableBlock.TableWood woodType, TableBlock.TableCloth clothType) {
         return registerBlock(name, new TableBlock(woodType, clothType));
@@ -81,6 +90,15 @@ public class ModBlocks {
             entries.add(ModBlocks.WARPED_COUNTER_TOP);
 
             entries.add(ModBlocks.ACACIA_TABLE);
+            entries.add(ModBlocks.BIRCH_TABLE);
+            entries.add(ModBlocks.CHERRY_TABLE);
+            entries.add(ModBlocks.CRIMSON_TABLE);
+            entries.add(ModBlocks.DARK_OAK_TABLE);
+            entries.add(ModBlocks.JUNGLE_TABLE);
+            entries.add(ModBlocks.MANGROVE_TABLE);
+            entries.add(ModBlocks.OAK_TABLE);
+            entries.add(ModBlocks.SPRUCE_TABLE);
+            entries.add(ModBlocks.WARPED_TABLE);
         });
     }
 }
