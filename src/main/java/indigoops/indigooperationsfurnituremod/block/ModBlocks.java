@@ -14,16 +14,16 @@ import net.minecraft.util.Identifier;
 
 public class ModBlocks {
     /* sinks */
-    public static final Block ACACIA_SINK = registerBlock("acacia_sink", new AcaciaSinkBlock());
-    public static final Block BIRCH_SINK = registerBlock("birch_sink", new BirchSinkBlock());
-    public static final Block CHERRY_SINK = registerBlock("cherry_sink", new CherrySinkBlock());
-    public static final Block CRIMSON_SINK = registerBlock("crimson_sink", new CrimsonSinkBlock());
-    public static final Block DARK_OAK_SINK = registerBlock("dark_oak_sink", new DarkOakSinkBlock());
-    public static final Block JUNGLE_SINK = registerBlock("jungle_sink", new JungleSinkBlock());
-    public static final Block MANGROVE_SINK = registerBlock("mangrove_sink", new MangroveSinkBlock());
-    public static final Block OAK_SINK = registerBlock("oak_sink", new OakSinkBlock());
-    public static final Block SPRUCE_SINK = registerBlock("spruce_sink", new SpruceSinkBlock());
-    public static final Block WARPED_SINK = registerBlock("warped_sink", new WarpedSinkBlock());
+    public static final Block ACACIA_SINK = registerSinkBlock("acacia_sink", SinkBlock.SinkWood.ACACIA);
+    public static final Block BIRCH_SINK = registerSinkBlock("birch_sink", SinkBlock.SinkWood.BIRCH);
+    public static final Block CHERRY_SINK = registerSinkBlock("cherry_sink", SinkBlock.SinkWood.CHERRY);
+    public static final Block CRIMSON_SINK = registerSinkBlock("crimson_sink", SinkBlock.SinkWood.CRIMSON);
+    public static final Block DARK_OAK_SINK = registerSinkBlock("dark_oak_sink", SinkBlock.SinkWood.DARKOAK);
+    public static final Block JUNGLE_SINK = registerSinkBlock("jungle_sink", SinkBlock.SinkWood.JUNGLE);
+    public static final Block MANGROVE_SINK = registerSinkBlock("mangrove_sink", SinkBlock.SinkWood.MANGROVE);
+    public static final Block OAK_SINK = registerSinkBlock("oak_sink", SinkBlock.SinkWood.OAK);
+    public static final Block SPRUCE_SINK = registerSinkBlock("spruce_sink", SinkBlock.SinkWood.SPRUCE);
+    public static final Block WARPED_SINK = registerSinkBlock("warped_sink", SinkBlock.SinkWood.WARPED);
 
     /* counter tops */
     public static final Block OAK_COUNTER_TOP = registerBlock("oak_counter_top", new OakCounterTopBlock());
@@ -51,6 +51,10 @@ public class ModBlocks {
 
     private static Block registerTableBlock(String name, TableBlock.TableWood woodType, TableBlock.TableCloth clothType) {
         return registerBlock(name, new TableBlock(woodType, clothType));
+    }
+
+    private static Block registerSinkBlock(String name, SinkBlock.SinkWood woodType) {
+        return registerBlock(name, new SinkBlock(woodType));
     }
 
     private static Block registerBlock(String name, Block block){

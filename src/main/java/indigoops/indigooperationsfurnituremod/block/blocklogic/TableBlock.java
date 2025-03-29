@@ -474,10 +474,10 @@ public class TableBlock extends Block {
     protected static final VoxelShape NORTH_TOP_RIGHT_SHAPE = VoxelShapes.union(TABLE_TOP, TOP_RIGHT_LEG);
 
     // East-facing shapes
-    protected static final VoxelShape EAST_BOTTOM_LEFT_SHAPE = VoxelShapes.union(TABLE_TOP, BOTTOM_RIGHT_LEG);
-    protected static final VoxelShape EAST_BOTTOM_RIGHT_SHAPE = VoxelShapes.union(TABLE_TOP, TOP_RIGHT_LEG);
-    protected static final VoxelShape EAST_TOP_LEFT_SHAPE = VoxelShapes.union(TABLE_TOP, BOTTOM_LEFT_LEG);
-    protected static final VoxelShape EAST_TOP_RIGHT_SHAPE = VoxelShapes.union(TABLE_TOP, TOP_LEFT_LEG);
+    protected static final VoxelShape EAST_BOTTOM_LEFT_SHAPE = VoxelShapes.union(TABLE_TOP, TOP_LEFT_LEG);
+    protected static final VoxelShape EAST_BOTTOM_RIGHT_SHAPE = VoxelShapes.union(TABLE_TOP, BOTTOM_LEFT_LEG); // top right
+    protected static final VoxelShape EAST_TOP_LEFT_SHAPE = VoxelShapes.union(TABLE_TOP, TOP_RIGHT_LEG);
+    protected static final VoxelShape EAST_TOP_RIGHT_SHAPE = VoxelShapes.union(TABLE_TOP, BOTTOM_RIGHT_LEG);
 
     // South-facing shapes
     protected static final VoxelShape SOUTH_BOTTOM_LEFT_SHAPE = VoxelShapes.union(TABLE_TOP, TOP_RIGHT_LEG);
@@ -486,10 +486,10 @@ public class TableBlock extends Block {
     protected static final VoxelShape SOUTH_TOP_RIGHT_SHAPE = VoxelShapes.union(TABLE_TOP, BOTTOM_LEFT_LEG);
 
     // West-facing shapes
-    protected static final VoxelShape WEST_BOTTOM_LEFT_SHAPE = VoxelShapes.union(TABLE_TOP, TOP_LEFT_LEG);
-    protected static final VoxelShape WEST_BOTTOM_RIGHT_SHAPE = VoxelShapes.union(TABLE_TOP, BOTTOM_LEFT_LEG);
-    protected static final VoxelShape WEST_TOP_LEFT_SHAPE = VoxelShapes.union(TABLE_TOP, TOP_RIGHT_LEG);
-    protected static final VoxelShape WEST_TOP_RIGHT_SHAPE = VoxelShapes.union(TABLE_TOP, BOTTOM_RIGHT_LEG);
+    protected static final VoxelShape WEST_BOTTOM_LEFT_SHAPE = VoxelShapes.union(TABLE_TOP, BOTTOM_RIGHT_LEG);
+    protected static final VoxelShape WEST_BOTTOM_RIGHT_SHAPE = VoxelShapes.union(TABLE_TOP, TOP_RIGHT_LEG);
+    protected static final VoxelShape WEST_TOP_LEFT_SHAPE = VoxelShapes.union(TABLE_TOP, BOTTOM_LEFT_LEG);
+    protected static final VoxelShape WEST_TOP_RIGHT_SHAPE = VoxelShapes.union(TABLE_TOP, TOP_LEFT_LEG);
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {

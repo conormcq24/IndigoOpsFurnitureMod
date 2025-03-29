@@ -31,24 +31,25 @@ public class IndigoOperationsFurnitureModClient implements ClientModInitializer 
 
     @Override
     public void onInitializeClient() {
+
         BlockEntityRendererRegistry.register(ModBlockEntities.SINK_BLOCK_ENTITY, SinkBlockEntityRenderer::new);
         HandledScreens.register(ModScreens.SINK_SCREEN_HANDLER, SinkScreen::new);
         BlockEntityRendererRegistry.register(ModBlockEntities.COUNTER_TOP_BLOCK_ENTITY, CounterTopBlockEntityRenderer::new);
         HandledScreens.register(ModScreens.COUNTER_TOP_SCREEN_HANDLER, CounterTopScreen::new);
 
-        // handle transparency for cloth, and tint for wood on table objects
-        BlockRenderLayerMap.INSTANCE.putBlock(ACACIA_TABLE, RenderLayer.getTranslucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(BIRCH_TABLE, RenderLayer.getTranslucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(CHERRY_TABLE, RenderLayer.getTranslucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(CRIMSON_TABLE, RenderLayer.getTranslucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(DARK_OAK_TABLE, RenderLayer.getTranslucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(JUNGLE_TABLE, RenderLayer.getTranslucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(MANGROVE_TABLE, RenderLayer.getTranslucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(OAK_TABLE, RenderLayer.getTranslucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(SPRUCE_TABLE, RenderLayer.getTranslucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(WARPED_TABLE, RenderLayer.getTranslucent());
+        // Handle transparency for cloth
+        BlockRenderLayerMap.INSTANCE.putBlock(ACACIA_TABLE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BIRCH_TABLE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(CHERRY_TABLE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(CRIMSON_TABLE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(DARK_OAK_TABLE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(JUNGLE_TABLE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(MANGROVE_TABLE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(OAK_TABLE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(SPRUCE_TABLE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(WARPED_TABLE, RenderLayer.getCutout());
 
-        // Register color providers for each table type
+        // Register wood colors for Table
         registerTableColorProvider(ACACIA_TABLE, 0xb05c34);
         registerTableColorProvider(BIRCH_TABLE, 0xd4c484);
         registerTableColorProvider(CHERRY_TABLE, 0xdc9c94);
@@ -59,6 +60,30 @@ public class IndigoOperationsFurnitureModClient implements ClientModInitializer 
         registerTableColorProvider(OAK_TABLE, 0xc49c64);
         registerTableColorProvider(SPRUCE_TABLE, 0x7c5c34);
         registerTableColorProvider(WARPED_TABLE, 0x3c8c8c);
+
+        // Handle transparency for sink
+        BlockRenderLayerMap.INSTANCE.putBlock(ACACIA_SINK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BIRCH_SINK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(CHERRY_SINK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(CRIMSON_SINK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(DARK_OAK_SINK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(JUNGLE_SINK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(MANGROVE_SINK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(OAK_SINK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(SPRUCE_SINK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(WARPED_SINK, RenderLayer.getCutout());
+
+        // Register wood colors for Sink
+        registerSinkColorProvider(ACACIA_SINK, 0xb05c34);
+        registerSinkColorProvider(BIRCH_SINK, 0xd4c484);
+        registerSinkColorProvider(CHERRY_SINK, 0xdc9c94);
+        registerSinkColorProvider(CRIMSON_SINK, 0x843c5c);
+        registerSinkColorProvider(DARK_OAK_SINK, 0x4c341c);
+        registerSinkColorProvider(JUNGLE_SINK, 0xb8885c);
+        registerSinkColorProvider(MANGROVE_SINK, 0x8c4c3c);
+        registerSinkColorProvider(OAK_SINK, 0xc49c64);
+        registerSinkColorProvider(SPRUCE_SINK, 0x7c5c34);
+        registerSinkColorProvider(WARPED_SINK, 0x3c8c8c);
 
         registerItemColorProviders();
     }
@@ -98,25 +123,54 @@ public class IndigoOperationsFurnitureModClient implements ClientModInitializer 
             default: return -1; // No tint applied
         }
     }
+
     private void registerItemColorProviders() {
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
+                    if (tintIndex == 0) {
+                        Item item = stack.getItem();
+                        // Table item checks
+                        if (item == ACACIA_TABLE.asItem()) return 0xFF000000 | 0xb05c34;
+                        if (item == BIRCH_TABLE.asItem()) return 0xFF000000 | 0xd4c484;
+                        if (item == CHERRY_TABLE.asItem()) return 0xFF000000 | 0xdc9c94;
+                        if (item == CRIMSON_TABLE.asItem()) return 0xFF000000 | 0x843c5c;
+                        if (item == DARK_OAK_TABLE.asItem()) return 0xFF000000 | 0x4c341c;
+                        if (item == JUNGLE_TABLE.asItem()) return 0xFF000000 | 0xb8885c;
+                        if (item == MANGROVE_TABLE.asItem()) return 0xFF000000 | 0x8c4c3c;
+                        if (item == OAK_TABLE.asItem()) return 0xFF000000 | 0xc49c64;
+                        if (item == SPRUCE_TABLE.asItem()) return 0xFF000000 | 0x7c5c34;
+                        if (item == WARPED_TABLE.asItem()) return 0xFF000000 | 0x3c8c8c;
+
+                        // Sink item checks
+                        if (item == ACACIA_SINK.asItem()) return 0xFF000000 | 0xb05c34;
+                        if (item == BIRCH_SINK.asItem()) return 0xFF000000 | 0xd4c484;
+                        if (item == CHERRY_SINK.asItem()) return 0xFF000000 | 0xdc9c94;
+                        if (item == CRIMSON_SINK.asItem()) return 0xFF000000 | 0x843c5c;
+                        if (item == DARK_OAK_SINK.asItem()) return 0xFF000000 | 0x4c341c;
+                        if (item == JUNGLE_SINK.asItem()) return 0xFF000000 | 0xb8885c;
+                        if (item == MANGROVE_SINK.asItem()) return 0xFF000000 | 0x8c4c3c;
+                        if (item == OAK_SINK.asItem()) return 0xFF000000 | 0xc49c64;
+                        if (item == SPRUCE_SINK.asItem()) return 0xFF000000 | 0x7c5c34;
+                        if (item == WARPED_SINK.asItem()) return 0xFF000000 | 0x3c8c8c;
+                    }
+                    return -1;
+                },
+                // List all items that should use this color provider
+                ACACIA_TABLE.asItem(), BIRCH_TABLE.asItem(), CHERRY_TABLE.asItem(), CRIMSON_TABLE.asItem(),
+                DARK_OAK_TABLE.asItem(), JUNGLE_TABLE.asItem(), MANGROVE_TABLE.asItem(), OAK_TABLE.asItem(),
+                SPRUCE_TABLE.asItem(), WARPED_TABLE.asItem(),
+                // Add sink items to the registration
+                ACACIA_SINK.asItem(), BIRCH_SINK.asItem(), CHERRY_SINK.asItem(), CRIMSON_SINK.asItem(),
+                DARK_OAK_SINK.asItem(), JUNGLE_SINK.asItem(), MANGROVE_SINK.asItem(), OAK_SINK.asItem(),
+                SPRUCE_SINK.asItem(), WARPED_SINK.asItem());
+    }
+
+    private void registerSinkColorProvider(Block sinkBlock, int woodColor) {
+        IndigoOperationsFurnitureMod.LOGGER.info("Registering sink color provider for " + sinkBlock.toString());
+        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> {
             if (tintIndex == 0) {
-                Item item = stack.getItem();
-                // Add 0xFF000000 to ensure full alpha
-                if (item == ACACIA_TABLE.asItem()) return 0xFF000000 | 0xb05c34;
-                if (item == BIRCH_TABLE.asItem()) return 0xFF000000 | 0xd4c484;
-                if (item == CHERRY_TABLE.asItem()) return 0xFF000000 | 0xdc9c94;
-                if (item == CRIMSON_TABLE.asItem()) return 0xFF000000 | 0x843c5c;
-                if (item == DARK_OAK_TABLE.asItem()) return 0xFF000000 | 0x4c341c;
-                if (item == JUNGLE_TABLE.asItem()) return 0xFF000000 | 0xb8885c;
-                if (item == MANGROVE_TABLE.asItem()) return 0xFF000000 | 0x8c4c3c;
-                if (item == OAK_TABLE.asItem()) return 0xFF000000 | 0xc49c64;
-                if (item == SPRUCE_TABLE.asItem()) return 0xFF000000 | 0x7c5c34;
-                if (item == WARPED_TABLE.asItem()) return 0xFF000000 | 0x3c8c8c;
+                return woodColor; // Wood tint
             }
-            return -1;
-        }, ACACIA_TABLE.asItem(), BIRCH_TABLE.asItem(), CHERRY_TABLE.asItem(), CRIMSON_TABLE.asItem(),
-                DARK_OAK_TABLE.asItem(), JUNGLE_TABLE.asItem(), MANGROVE_TABLE.asItem(), OAK_TABLE.asItem(), SPRUCE_TABLE.asItem(),
-                    WARPED_TABLE.asItem());
+            return -1; // No tint applied
+        }, sinkBlock);
     }
 }

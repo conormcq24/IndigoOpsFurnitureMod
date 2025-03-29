@@ -29,6 +29,7 @@ import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -36,11 +37,32 @@ import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class SinkBlock extends BlockWithEntity implements BlockEntityProvider {
+public class SinkBlock extends BlockWithEntity implements BlockEntityProvider {
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     public static final BooleanProperty FAUCET = BooleanProperty.of("faucet_on");
+    public static final EnumProperty<SinkBlock.SinkWood> WOOD_TYPE = EnumProperty.of("wood_type", SinkBlock.SinkWood.class);
 
-    public SinkBlock() {
+    public enum SinkWood implements StringIdentifiable {
+        ACACIA("acacia"),
+        BIRCH("birch"),
+        CHERRY("cherry"),
+        CRIMSON("crimson"),
+        DARKOAK("dark_oak"),
+        JUNGLE("jungle"),
+        MANGROVE("mangrove"),
+        OAK("oak"),
+        SPRUCE("spruce"),
+        WARPED("warped");
+
+        private final String woodType;
+
+        SinkWood(String woodType) { this.woodType = woodType; }
+
+        @Override
+        public String asString() { return this.woodType; }
+    }
+
+    public SinkBlock(SinkBlock.SinkWood woodType) {
         super(AbstractBlock.Settings.create()
                 .strength(1f)
                 .sounds(BlockSoundGroup.WOOD)
@@ -48,23 +70,37 @@ public abstract class SinkBlock extends BlockWithEntity implements BlockEntityPr
         );
         this.setDefaultState(this.stateManager.getDefaultState()
                 .with(FACING, Direction.NORTH)
-                .with(FAUCET, false));
+                .with(FAUCET, false)
+                .with(WOOD_TYPE, woodType));
+    }
+    @Override
+    protected MapCodec<? extends BlockWithEntity> getCodec() {
+        // A simple implementation that doesn't need to handle serialization/deserialization
+        // This works for many block entities that don't need special serialization logic
+        return BlockWithEntity.createCodec(properties -> this);
     }
 
     @Nullable
     @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state){
-        return null;
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new SinkBlockEntity(pos, state);
     }
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
-        builder.add(FACING, FAUCET);
+        builder.add(FACING, FAUCET, WOOD_TYPE);
     }
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         Direction dir = ctx.getHorizontalPlayerFacing().getOpposite();
-        return this.getDefaultState().with(FACING, dir).with(FAUCET, false);
+
+        // Get the wood type from the default state (which was set in the constructor)
+        SinkWood woodType = this.getDefaultState().get(WOOD_TYPE);
+
+        return this.getDefaultState()
+                .with(FACING, dir)
+                .with(FAUCET, false)
+                .with(WOOD_TYPE, woodType);
     }
 
     @Override
@@ -88,6 +124,11 @@ public abstract class SinkBlock extends BlockWithEntity implements BlockEntityPr
             }
         }
         super.onStateReplaced(state, world, pos, newState, moved);
+    }
+
+    @Override
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
     }
 
     @Override
