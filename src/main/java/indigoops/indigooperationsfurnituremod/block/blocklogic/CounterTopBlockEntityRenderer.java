@@ -25,29 +25,6 @@ public class CounterTopBlockEntityRenderer implements BlockEntityRenderer<Counte
 
     @Override
     public void render(CounterTopBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-        // Get the block state (to check facing and faucet state)
-        BlockState blockState = entity.getCachedState();
 
-        // Start rendering the model
-        matrices.push();
-
-        // Get the world and block position (this is important for correct rendering)
-        ClientWorld world = MinecraftClient.getInstance().world;
-        BlockPos pos = entity.getPos();
-
-        // Get the BlockRenderManager instance
-        BlockRenderManager blockRenderManager = MinecraftClient.getInstance().getBlockRenderManager();
-
-        // Get a VertexConsumer from the VertexConsumerProvider
-        VertexConsumer vertexConsumer = vertexConsumers.getBuffer(RenderLayer.getCutout());  // Using the Cutout render layer for blocks
-
-        // Create an instance of Random (Minecraft's internal random class)
-        Random random = Random.create();
-
-        // I played with matrices for 4 hours and all I got was this stupid line of code
-        blockRenderManager.renderBlock(blockState, pos, world, matrices, vertexConsumer, true, random);
-
-        // Restore the transformation stack
-        matrices.pop();
     }
 }

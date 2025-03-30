@@ -85,6 +85,19 @@ public class IndigoOperationsFurnitureModClient implements ClientModInitializer 
         registerSinkColorProvider(SPRUCE_SINK, 0x7c5c34);
         registerSinkColorProvider(WARPED_SINK, 0x3c8c8c);
 
+
+        //Register Wood colors for Counter
+        registerCounterColorProvider(ACACIA_COUNTER_TOP, 0xb05c34);
+        registerCounterColorProvider(BIRCH_COUNTER_TOP, 0xd4c484);
+        registerCounterColorProvider(CHERRY_COUNTER_TOP, 0xdc9c94);
+        registerCounterColorProvider(CRIMSON_COUNTER_TOP, 0x843c5c);
+        registerCounterColorProvider(DARK_OAK_COUNTER_TOP, 0x4c341c);
+        registerCounterColorProvider(JUNGLE_COUNTER_TOP, 0xb8885c);
+        registerCounterColorProvider(MANGROVE_COUNTER_TOP, 0x8c4c3c);
+        registerCounterColorProvider(OAK_COUNTER_TOP, 0xc49c64);
+        registerCounterColorProvider(SPRUCE_COUNTER_TOP, 0x7c5c34);
+        registerCounterColorProvider(WARPED_COUNTER_TOP, 0x3c8c8c);
+
         registerItemColorProviders();
     }
 
@@ -151,6 +164,18 @@ public class IndigoOperationsFurnitureModClient implements ClientModInitializer 
                         if (item == OAK_SINK.asItem()) return 0xFF000000 | 0xc49c64;
                         if (item == SPRUCE_SINK.asItem()) return 0xFF000000 | 0x7c5c34;
                         if (item == WARPED_SINK.asItem()) return 0xFF000000 | 0x3c8c8c;
+
+                        //Counter item checks
+                        if (item == ACACIA_COUNTER_TOP.asItem()) return 0xFF000000 | 0xb05c34;
+                        if (item == BIRCH_COUNTER_TOP.asItem()) return 0xFF000000 | 0xd4c484;
+                        if (item == CHERRY_COUNTER_TOP.asItem()) return 0xFF000000 | 0xdc9c94;
+                        if (item == CRIMSON_COUNTER_TOP.asItem()) return 0xFF000000 | 0x843c5c;
+                        if (item == DARK_OAK_COUNTER_TOP.asItem()) return 0xFF000000 | 0x4c341c;
+                        if (item == JUNGLE_COUNTER_TOP.asItem()) return 0xFF000000 | 0xb8885c;
+                        if (item == MANGROVE_COUNTER_TOP.asItem()) return 0xFF000000 | 0x8c4c3c;
+                        if (item == OAK_COUNTER_TOP.asItem()) return 0xFF000000 | 0xc49c64;
+                        if (item == SPRUCE_COUNTER_TOP.asItem()) return 0xFF000000 | 0x7c5c34;
+                        if (item == WARPED_COUNTER_TOP.asItem()) return 0xFF000000 | 0x3c8c8c;
                     }
                     return -1;
                 },
@@ -161,16 +186,28 @@ public class IndigoOperationsFurnitureModClient implements ClientModInitializer 
                 // Add sink items to the registration
                 ACACIA_SINK.asItem(), BIRCH_SINK.asItem(), CHERRY_SINK.asItem(), CRIMSON_SINK.asItem(),
                 DARK_OAK_SINK.asItem(), JUNGLE_SINK.asItem(), MANGROVE_SINK.asItem(), OAK_SINK.asItem(),
-                SPRUCE_SINK.asItem(), WARPED_SINK.asItem());
+                SPRUCE_SINK.asItem(), WARPED_SINK.asItem(),
+                // add counter items to registration
+                ACACIA_COUNTER_TOP.asItem(), BIRCH_COUNTER_TOP.asItem(), CHERRY_COUNTER_TOP.asItem(), CRIMSON_COUNTER_TOP.asItem(),
+                DARK_OAK_COUNTER_TOP.asItem(), JUNGLE_COUNTER_TOP.asItem(), MANGROVE_COUNTER_TOP.asItem(), OAK_COUNTER_TOP.asItem(),
+                SPRUCE_COUNTER_TOP.asItem(), WARPED_COUNTER_TOP.asItem());
     }
 
     private void registerSinkColorProvider(Block sinkBlock, int woodColor) {
-        IndigoOperationsFurnitureMod.LOGGER.info("Registering sink color provider for " + sinkBlock.toString());
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> {
             if (tintIndex == 0) {
                 return woodColor; // Wood tint
             }
             return -1; // No tint applied
         }, sinkBlock);
+    }
+
+    private void registerCounterColorProvider(Block counterTopBlock, int woodColor) {
+        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> {
+            if(tintIndex == 0) {
+                return woodColor;
+            }
+            return -1;
+        }, counterTopBlock);
     }
 }

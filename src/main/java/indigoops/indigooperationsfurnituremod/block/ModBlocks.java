@@ -26,16 +26,16 @@ public class ModBlocks {
     public static final Block WARPED_SINK = registerSinkBlock("warped_sink", SinkBlock.SinkWood.WARPED);
 
     /* counter tops */
-    public static final Block OAK_COUNTER_TOP = registerBlock("oak_counter_top", new OakCounterTopBlock());
-    public static final Block ACACIA_COUNTER_TOP = registerBlock("acacia_counter_top", new AcaciaCounterTopBlock());
-    public static final Block BIRCH_COUNTER_TOP = registerBlock("birch_counter_top", new BirchCounterTopBlock());
-    public static final Block CHERRY_COUNTER_TOP = registerBlock("cherry_counter_top", new CherryCounterTopBlock());
-    public static final Block CRIMSON_COUNTER_TOP = registerBlock("crimson_counter_top", new CrimsonCounterTopBlock());
-    public static final Block DARK_OAK_COUNTER_TOP = registerBlock("dark_oak_counter_top", new DarkOakCounterTopBlock());
-    public static final Block JUNGLE_COUNTER_TOP = registerBlock("jungle_counter_top", new JungleCounterTopBlock());
-    public static final Block MANGROVE_COUNTER_TOP = registerBlock("mangrove_counter_top", new MangroveCounterTopBlock());
-    public static final Block SPRUCE_COUNTER_TOP = registerBlock("spruce_counter_top", new SpruceCounterTopBlock());
-    public static final Block WARPED_COUNTER_TOP = registerBlock("warped_counter_top", new WarpedCounterTopBlock());
+    public static final Block ACACIA_COUNTER_TOP = registerCounterTopBlock("acacia_counter_top", CounterTopBlock.CounterTopWood.ACACIA);
+    public static final Block BIRCH_COUNTER_TOP = registerCounterTopBlock("birch_counter_top", CounterTopBlock.CounterTopWood.BIRCH);
+    public static final Block CHERRY_COUNTER_TOP = registerCounterTopBlock("cherry_counter_top", CounterTopBlock.CounterTopWood.CHERRY);
+    public static final Block CRIMSON_COUNTER_TOP = registerCounterTopBlock("crimson_counter_top", CounterTopBlock.CounterTopWood.CRIMSON);
+    public static final Block DARK_OAK_COUNTER_TOP = registerCounterTopBlock("dark_oak_counter_top", CounterTopBlock.CounterTopWood.DARKOAK);
+    public static final Block JUNGLE_COUNTER_TOP = registerCounterTopBlock("jungle_counter_top", CounterTopBlock.CounterTopWood.JUNGLE);
+    public static final Block OAK_COUNTER_TOP = registerCounterTopBlock("oak_counter_top", CounterTopBlock.CounterTopWood.OAK);
+    public static final Block MANGROVE_COUNTER_TOP = registerCounterTopBlock("mangrove_counter_top", CounterTopBlock.CounterTopWood.MANGROVE);
+    public static final Block SPRUCE_COUNTER_TOP = registerCounterTopBlock("spruce_counter_top", CounterTopBlock.CounterTopWood.SPRUCE);
+    public static final Block WARPED_COUNTER_TOP = registerCounterTopBlock("warped_counter_top", CounterTopBlock.CounterTopWood.WARPED);
 
     /* tables */
     public static final Block ACACIA_TABLE = registerTableBlock("acacia_table", TableBlock.TableWood.ACACIA, TableBlock.TableCloth.NONE);
@@ -55,6 +55,10 @@ public class ModBlocks {
 
     private static Block registerSinkBlock(String name, SinkBlock.SinkWood woodType) {
         return registerBlock(name, new SinkBlock(woodType));
+    }
+
+    private static Block registerCounterTopBlock(String name, CounterTopBlock.CounterTopWood woodType) {
+        return registerBlock(name, new CounterTopBlock(woodType));
     }
 
     private static Block registerBlock(String name, Block block){
