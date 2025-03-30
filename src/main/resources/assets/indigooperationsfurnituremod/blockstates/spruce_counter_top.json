@@ -1,19 +1,19 @@
 {
   "variants": {
     "facing=north": {
-      "model": "indigooperationsfurnituremod:block/spruce_counter_top_north",
+      "model": "indigooperationsfurnituremod:block/counter_top_north",
       "y": 0
     },
     "facing=east": {
-      "model": "indigooperationsfurnituremod:block/spruce_counter_top_east",
+      "model": "indigooperationsfurnituremod:block/counter_top_east",
       "y": 90
     },
     "facing=south": {
-      "model": "indigooperationsfurnituremod:block/spruce_counter_top_south",
+      "model": "indigooperationsfurnituremod:block/counter_top_south",
       "y": 180
     },
     "facing=west": {
-      "model": "indigooperationsfurnituremod:block/spruce_counter_top_west",
+      "model": "indigooperationsfurnituremod:block/counter_top_west",
       "y": 270
     }
   }

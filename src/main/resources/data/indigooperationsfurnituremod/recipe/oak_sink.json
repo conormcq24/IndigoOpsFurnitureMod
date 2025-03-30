@@ -8,12 +8,15 @@
     "#": {
       "item": "minecraft:chest"
     },
+    "X": {
+      "item": "minecraft:purpur_slab"
+    },
     "@": {
       "item": "minecraft:water_bucket"
     }
   },
   "pattern": [
-    "@@@",
+    "X@X",
     "!#!",
     "!!!"
   ],
@@ -21,4 +24,4 @@
     "count": 1,
     "id": "indigooperationsfurnituremod:oak_sink"
   }
-  }
+}

@@ -1,0 +1,36 @@
+{
+  "variants": {
+    "facing=north,part=chair": {
+      "model": "indigooperationsfurnituremod:block/chair",
+      "y": 0
+    },
+    "facing=east,part=chair": {
+      "model": "indigooperationsfurnituremod:block/chair",
+      "y": 90
+    },
+    "facing=south,part=chair": {
+      "model": "indigooperationsfurnituremod:block/chair",
+      "y": 180
+    },
+    "facing=west,part=chair": {
+      "model": "indigooperationsfurnituremod:block/chair",
+      "y": 270
+    },
+    "facing=north,part=chair_top": {
+      "model": "indigooperationsfurnituremod:block/chair_top",
+      "y": 0
+    },
+    "facing=east,part=chair_top": {
+      "model": "indigooperationsfurnituremod:block/chair_top",
+      "y": 90
+    },
+    "facing=south,part=chair_top": {
+      "model": "indigooperationsfurnituremod:block/chair_top",
+      "y": 180
+    },
+    "facing=west,part=chair_top": {
+      "model": "indigooperationsfurnituremod:block/chair_top",
+      "y": 270
+    }
+  }
+}

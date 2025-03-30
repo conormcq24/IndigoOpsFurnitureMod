@@ -8,12 +8,15 @@
     "#": {
       "item": "minecraft:chest"
     },
+    "X": {
+      "item": "minecraft:purpur_slab"
+    },
     "@": {
       "item": "minecraft:water_bucket"
     }
   },
   "pattern": [
-    "@@@",
+    "X@X",
     "!#!",
     "!!!"
   ],

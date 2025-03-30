@@ -1,5 +1,6 @@
 package indigoops.indigooperationsfurnituremod.block.blocklogic;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.ItemEntity;
@@ -13,39 +14,78 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class CounterTopBlock extends BlockWithEntity implements BlockEntityProvider {
+public class CounterTopBlock extends BlockWithEntity implements BlockEntityProvider {
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
-    public CounterTopBlock() {
+    public static final EnumProperty<CounterTopBlock.CounterTopWood> WOOD_TYPE = EnumProperty.of("wood_type", CounterTopBlock.CounterTopWood.class);
+
+    public enum CounterTopWood implements StringIdentifiable {
+        ACACIA("acacia"),
+        BIRCH("birch"),
+        CHERRY("cherry"),
+        CRIMSON("crimson"),
+        DARKOAK("dark_oak"),
+        JUNGLE("jungle"),
+        MANGROVE("mangrove"),
+        OAK("oak"),
+        SPRUCE("spruce"),
+        WARPED("warped");
+
+        private final String woodType;
+
+        CounterTopWood(String woodType) { this.woodType = woodType; }
+
+        @Override
+        public String asString() { return this.woodType; }
+    }
+
+    public CounterTopBlock(CounterTopBlock.CounterTopWood woodType) {
         super(AbstractBlock.Settings.create()
                 .strength(1f)
                 .sounds(BlockSoundGroup.WOOD)
                 .nonOpaque()
         );
         this.setDefaultState(this.stateManager.getDefaultState()
-                .with(FACING, Direction.NORTH));
+                .with(FACING, Direction.NORTH)
+                .with(WOOD_TYPE, woodType));
     }
+
+    @Override
+    protected MapCodec<? extends BlockWithEntity> getCodec() {
+        // A simple implementation that doesn't need to handle serialization/deserialization
+        // This works for many block entities that don't need special serialization logic
+        return BlockWithEntity.createCodec(properties -> this);
+    }
+
     @Nullable
     @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state){
-        return null;
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new CounterTopBlockEntity(pos, state);
     }
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
-        builder.add(FACING);
+        builder.add(FACING, WOOD_TYPE);
     }
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
+        CounterTopBlock.CounterTopWood woodType = this.getDefaultState().get(WOOD_TYPE);
         Direction dir = ctx.getHorizontalPlayerFacing().getOpposite();
-        return this.getDefaultState().with(FACING, dir);
+        return this.getDefaultState().with(FACING, dir).with(WOOD_TYPE, woodType);
+    }
+
+    @Override
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
     }
 
     @Override

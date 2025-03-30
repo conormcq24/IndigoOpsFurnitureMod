@@ -1,35 +1,35 @@
 {
   "variants": {
     "facing=north,faucet_on=true": {
-      "model": "indigooperationsfurnituremod:block/dark_oak_sink_full",
+      "model": "indigooperationsfurnituremod:block/sink_full_north",
       "y": 0
     },
     "facing=east,faucet_on=true": {
-      "model": "indigooperationsfurnituremod:block/dark_oak_sink_full",
+      "model": "indigooperationsfurnituremod:block/sink_full_east",
       "y": 90
     },
     "facing=south,faucet_on=true": {
-      "model": "indigooperationsfurnituremod:block/dark_oak_sink_full",
+      "model": "indigooperationsfurnituremod:block/sink_full_south",
       "y": 180
     },
     "facing=west,faucet_on=true": {
-      "model": "indigooperationsfurnituremod:block/dark_oak_sink_full",
+      "model": "indigooperationsfurnituremod:block/sink_full_west",
       "y": 270
     },
     "facing=north,faucet_on=false": {
-      "model": "indigooperationsfurnituremod:block/dark_oak_sink",
+      "model": "indigooperationsfurnituremod:block/sink_empty_north",
       "y": 0
     },
     "facing=east,faucet_on=false": {
-      "model": "indigooperationsfurnituremod:block/dark_oak_sink",
+      "model": "indigooperationsfurnituremod:block/sink_empty_east",
       "y": 90
     },
     "facing=south,faucet_on=false": {
-      "model": "indigooperationsfurnituremod:block/dark_oak_sink",
+      "model": "indigooperationsfurnituremod:block/sink_empty_south",
       "y": 180
     },
     "facing=west,faucet_on=false": {
-      "model": "indigooperationsfurnituremod:block/dark_oak_sink",
+      "model": "indigooperationsfurnituremod:block/sink_empty_west",
       "y": 270
     }
   }

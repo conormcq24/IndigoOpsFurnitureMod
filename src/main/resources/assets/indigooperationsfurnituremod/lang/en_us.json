@@ -1,4 +1,15 @@
 {
+  "block.indigooperationsfurnituremod.acacia_chair": "Acacia Chair",
+  "block.indigooperationsfurnituremod.birch_chair": "Birch Chair",
+  "block.indigooperationsfurnituremod.cherry_chair": "Cherry Chair",
+  "block.indigooperationsfurnituremod.crimson_chair": "Crimson Chair",
+  "block.indigooperationsfurnituremod.dark_oak_chair": "Dark Oak Chair",
+  "block.indigooperationsfurnituremod.jungle_chair": "Jungle Chair",
+  "block.indigooperationsfurnituremod.mangrove_chair": "Mangrove Chair",
+  "block.indigooperationsfurnituremod.oak_chair": "Oak Chair",
+  "block.indigooperationsfurnituremod.spruce_chair": "Spruce Chair",
+  "block.indigooperationsfurnituremod.warped_chair": "Warped Chair",
+  
   "block.indigooperationsfurnituremod.acacia_sink": "Acacia Sink",
   "block.indigooperationsfurnituremod.birch_sink": "Birch Sink",
   "block.indigooperationsfurnituremod.cherry_sink": "Cherry Sink",
@@ -19,5 +30,16 @@
   "block.indigooperationsfurnituremod.mangrove_counter_top": "Mangrove Counter",
   "block.indigooperationsfurnituremod.oak_counter_top": "Oak Counter",
   "block.indigooperationsfurnituremod.spruce_counter_top": "Spruce Counter",
-  "block.indigooperationsfurnituremod.warped_counter_top": "Warped Counter"
+  "block.indigooperationsfurnituremod.warped_counter_top": "Warped Counter",
+
+  "block.indigooperationsfurnituremod.acacia_table": "Acacia Table",
+  "block.indigooperationsfurnituremod.birch_table": "Birch Table",
+  "block.indigooperationsfurnituremod.cherry_table": "Cherry Table",
+  "block.indigooperationsfurnituremod.crimson_table": "Crimson Table",
+  "block.indigooperationsfurnituremod.dark_oak_table": "Dark Oak Table",
+  "block.indigooperationsfurnituremod.jungle_table": "Jungle Table",
+  "block.indigooperationsfurnituremod.mangrove_table": "Mangrove Table",
+  "block.indigooperationsfurnituremod.oak_table": "Oak Table",
+  "block.indigooperationsfurnituremod.spruce_table": "Spruce Table",
+  "block.indigooperationsfurnituremod.warped_table": "Warped Table"
 }
