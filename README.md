@@ -7,6 +7,8 @@ This project is a minecraft fabric mod, it adds several furniture models to the 
 3. [List of All Mod Blocks](#list-of-all-mod-blocks)
    - [Sinks](#sinks)
    - [Counters](#counters)
+   - [Tables](#tables)
+   - [Chairs](#chairs)
 4. [Upcoming Features](#upcoming-features)
 
 ## Installation
@@ -36,7 +38,9 @@ This project is a minecraft fabric mod, it adds several furniture models to the 
 #### Crafting Recipe
 >Output of sink type is dependent on the wood planks used. Ex: Oak planks will produce an oak sink. All five wooden planks must be of the same type
 
-<img src="https://imgur.com/eej11VZ.png" width="242" height="134" />
+<p align="center">
+   <img src="https://imgur.com/jNsOx9r.png" width="50%" height="auto" />
+</p>
 
 #### Description
 >
@@ -54,6 +58,7 @@ This project is a minecraft fabric mod, it adds several furniture models to the 
 >  
 > First Implemented Version 1.0.0
 
+
 ---
 
 ### Counters
@@ -61,7 +66,9 @@ This project is a minecraft fabric mod, it adds several furniture models to the 
 #### Crafting Recipe
 >Output of counter type is dependent on the wood planks used. Ex: Oak planks will produce an oak counter. All five wooden planks must be of the same type
 
-<img src="https://imgur.com/7rQZnTl.png" width="242" height="134" />
+<p align="center">
+   <img src="https://imgur.com/QMHuIu0.png" width="50%" height="auto" />
+</p>
 
 #### Description
 >
@@ -79,26 +86,70 @@ This project is a minecraft fabric mod, it adds several furniture models to the 
 >  
 > First Implemented Version 1.0.0
 
+
+---
+
+### Tables
+
+#### Crafting Recipe
+>Output of table type is dependent on the wood planks used. Ex: Oak planks will produce an oak table. All three wooden planks must be of the same type
+
+<p align="center">
+   <img src="https://imgur.com/21XOlty.png" width="50%" height="auto" />
+</p>
+
+#### Description
+>
+>Tables are a necessity for good interior decoration and minecraft has been lacking in this staple of a dining area for quite some time. When you craft the table and place it it will have no table cloth, you can place a table cloth on its surface by right clicking with a carpet of any color. This will take the carpet from your hand and feed it into the table as a table cloth that matches the color of the carpet you've spent. you can use shears to remove the table cloth, another carpet to update it, and if you break the table it will give you back any carpet you've placed on it.
+>- Acacia Table
+>- Birch Table
+>- Cherry Table
+>- Crimson Table
+>- Dark Oak Table
+>- Jungle Table
+>- Mangrove Table
+>- Oak Table
+>- Spruce Table
+>- Warped Table
+>  
+> First Implemented Version 1.0.0
+
+
 ---
 
 
-## Upcoming Features
+### Chairs
 
-#### VERSION 1.0.0: The Kitchen
-> The version with a focus on bringing your minecraft kitchen to life
->- Countertops
->- Hanging Cabinets
->- Barstools
->- Chairs
->- Dining Table
->- Oven
+#### Crafting Recipe
+>Output of chair type is dependent on the wood planks used. Ex: Oak planks will produce an oak chair. All 2 wooden planks must be of the same type
+
+<p align="center">
+   <img src="https://imgur.com/QAIWjjj.png" width="50%" height="auto" />
+</p>
+
+#### Description
 >
->
+>You simply cannot have a table without a chair! Similarly to the tables cloth the chair has a coushin which can be changed with a right click when a carpet is in your hand. The main difference is that the chair spawns with a default white coushin. Using a shear on a colored coushin will simply revert it back to white. Breaking Shearing and Replacing a white coushin will not give you back a white carpet to prevent duplication glitches, but any other color will.
+>- Acacia Chair
+>- Birch Chair
+>- Cherry Chair
+>- Crimson Chair
+>- Dark Oak Chair
+>- Jungle Chair
+>- Mangrove Chair
+>- Oak Chair
+>- Spruce Chair
+>- Warped Chair
+>  
+> First Implemented Version 1.0.0
+
+
+---
+## Upcoming Features
 #### VERSION 1.1.0: The Bedroom
 > The version that aspires to make your bedroom just a bit more cozy
 >- Better Beds (king and twin)
 >- Nightstands
->- Ceiling Fans (with light bulbs)
 >- Safes
 >- Dog Beds
 
