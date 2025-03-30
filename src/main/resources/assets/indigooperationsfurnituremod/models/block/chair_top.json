@@ -1,0 +1,56 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "indigooperationsfurnituremod:block/chair_wood",
+		"particle": "indigooperationsfurnituremod:block/chair_wood"
+	},
+	"elements": [
+		{
+			"from": [4, 0, 12],
+			"to": [12, 4, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 0, 12]},
+			"faces": {
+				"north": {"uv": [3, 2, 5, 3], "texture": "#0", "tintindex": 0},
+				"east": {"uv": [1, 0.25, 1.5, 1.25], "texture": "#0", "tintindex": 0},
+				"south": {"uv": [3, 2, 5, 3], "texture": "#0", "tintindex": 0},
+				"west": {"uv": [2.25, 7.25, 2.75, 8.25], "texture": "#0", "tintindex": 0},
+				"up": {"uv": [3, 1, 5, 1.5], "texture": "#0", "tintindex": 0},
+				"down": {"uv": [8.75, 2.25, 10.5, 3.5], "texture": "#0", "tintindex": 0}
+			}
+		},
+		{
+			"from": [2, 0, 12],
+			"to": [4, 5, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [2, 0, 12]},
+			"faces": {
+				"north": {"uv": [1.5, 5.75, 2, 7], "texture": "#0", "tintindex": 0},
+				"east": {"uv": [1.5, 5.75, 2, 7], "texture": "#0", "tintindex": 0},
+				"south": {"uv": [1.5, 5.75, 2, 7], "texture": "#0", "tintindex": 0},
+				"west": {"uv": [1.5, 5.75, 2, 7], "texture": "#0", "tintindex": 0},
+				"up": {"uv": [2.5, 5.25, 3, 5.75], "texture": "#0", "tintindex": 0},
+				"down": {"uv": [2.5, 5.25, 3, 5.75], "texture": "#0", "tintindex": 0}
+			}
+		},
+		{
+			"from": [12, 0, 12],
+			"to": [14, 5, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [12, 0, 12]},
+			"faces": {
+				"north": {"uv": [3, 6.25, 3.5, 7.5], "texture": "#0", "tintindex": 0},
+				"east": {"uv": [3, 6.25, 3.5, 7.5], "texture": "#0", "tintindex": 0},
+				"south": {"uv": [3, 6.25, 3.5, 7.5], "texture": "#0", "tintindex": 0},
+				"west": {"uv": [3, 6.25, 3.5, 7.5], "texture": "#0", "tintindex": 0},
+				"up": {"uv": [2.5, 5.25, 3, 5.75], "texture": "#0", "tintindex": 0},
+				"down": {"uv": [2.5, 5.25, 3, 5.75], "texture": "#0", "tintindex": 0}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "Top Chair",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0, 1, 2]
+		}
+	]
+}

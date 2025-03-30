@@ -13,6 +13,19 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModBlocks {
+
+    /* chairs */
+    public static final Block ACACIA_CHAIR = registerChairBlock("acacia_chair", ChairBlock.ChairWood.ACACIA);
+    public static final Block BIRCH_CHAIR = registerChairBlock("birch_chair", ChairBlock.ChairWood.BIRCH);
+    public static final Block CHERRY_CHAIR = registerChairBlock("cherry_chair", ChairBlock.ChairWood.CHERRY);
+    public static final Block CRIMSON_CHAIR = registerChairBlock("crimson_chair", ChairBlock.ChairWood.CRIMSON);
+    public static final Block DARK_OAK_CHAIR = registerChairBlock("dark_oak_chair", ChairBlock.ChairWood.DARKOAK);
+    public static final Block JUNGLE_CHAIR = registerChairBlock("jungle_chair", ChairBlock.ChairWood.JUNGLE);
+    public static final Block MANGROVE_CHAIR = registerChairBlock("mangrove_chair", ChairBlock.ChairWood.MANGROVE);
+    public static final Block OAK_CHAIR = registerChairBlock("oak_chair", ChairBlock.ChairWood.OAK);
+    public static final Block SPRUCE_CHAIR = registerChairBlock("spruce_chair", ChairBlock.ChairWood.SPRUCE);
+    public static final Block WARPED_CHAIR = registerChairBlock("warped_chair", ChairBlock.ChairWood.WARPED);
+
     /* sinks */
     public static final Block ACACIA_SINK = registerSinkBlock("acacia_sink", SinkBlock.SinkWood.ACACIA);
     public static final Block BIRCH_SINK = registerSinkBlock("birch_sink", SinkBlock.SinkWood.BIRCH);
@@ -71,9 +84,24 @@ public class ModBlocks {
                 new BlockItem(block, new Item.Settings()));
     }
 
+    private static Block registerChairBlock(String name, ChairBlock.ChairWood woodType) {
+        return registerBlock(name, new ChairBlock(woodType));
+    }
+
     public static void registerModBlocks(){
         IndigoOperationsFurnitureMod.LOGGER.info("Registering Mod Blocks for " + IndigoOperationsFurnitureMod.MOD_ID);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> {
+
+            entries.add(ModBlocks.ACACIA_CHAIR);
+            entries.add(ModBlocks.BIRCH_CHAIR);
+            entries.add(ModBlocks.CHERRY_CHAIR);
+            entries.add(ModBlocks.CRIMSON_CHAIR);
+            entries.add(ModBlocks.DARK_OAK_CHAIR);
+            entries.add(ModBlocks.JUNGLE_CHAIR);
+            entries.add(ModBlocks.MANGROVE_CHAIR);
+            entries.add(ModBlocks.OAK_CHAIR);
+            entries.add(ModBlocks.SPRUCE_CHAIR);
+            entries.add(ModBlocks.WARPED_CHAIR);
 
             entries.add(ModBlocks.ACACIA_SINK);
             entries.add(ModBlocks.BIRCH_SINK);

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "!": {
+      "item": "minecraft:stick"
+    },
+    "@": {
+      "item": "minecraft:acacia_planks"
+    }
+  },
+  "pattern": [
+    "  @",
+    "@@@",
+    "! !"
+  ],
+  "result": {
+    "count": 4,
+    "id": "indigooperationsfurnituremod:acacia_chair"
+  }
+}

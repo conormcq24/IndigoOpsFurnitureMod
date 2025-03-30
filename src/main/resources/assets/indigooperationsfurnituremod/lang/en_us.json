@@ -1,4 +1,15 @@
 {
+  "block.indigooperationsfurnituremod.acacia_chair": "Acacia Chair",
+  "block.indigooperationsfurnituremod.birch_chair": "Birch Chair",
+  "block.indigooperationsfurnituremod.cherry_chair": "Cherry Chair",
+  "block.indigooperationsfurnituremod.crimson_chair": "Crimson Chair",
+  "block.indigooperationsfurnituremod.dark_oak_chair": "Dark Oak Chair",
+  "block.indigooperationsfurnituremod.jungle_chair": "Jungle Chair",
+  "block.indigooperationsfurnituremod.mangrove_chair": "Mangrove Chair",
+  "block.indigooperationsfurnituremod.oak_chair": "Oak Chair",
+  "block.indigooperationsfurnituremod.spruce_chair": "Spruce Chair",
+  "block.indigooperationsfurnituremod.warped_chair": "Warped Chair",
+  
   "block.indigooperationsfurnituremod.acacia_sink": "Acacia Sink",
   "block.indigooperationsfurnituremod.birch_sink": "Birch Sink",
   "block.indigooperationsfurnituremod.cherry_sink": "Cherry Sink",

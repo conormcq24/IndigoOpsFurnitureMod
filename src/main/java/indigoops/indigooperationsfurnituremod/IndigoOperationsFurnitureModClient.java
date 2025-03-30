@@ -2,10 +2,9 @@ package indigoops.indigooperationsfurnituremod;
 
 import indigoops.indigooperationsfurnituremod.block.ModBlockEntities;
 import indigoops.indigooperationsfurnituremod.block.ModBlocks;
-import indigoops.indigooperationsfurnituremod.block.blocklogic.CounterTopBlockEntityRenderer;
-import indigoops.indigooperationsfurnituremod.block.blocklogic.SinkBlockEntityRenderer;
-import indigoops.indigooperationsfurnituremod.block.blocklogic.SinkScreenHandler;
-import indigoops.indigooperationsfurnituremod.block.blocklogic.TableBlock;
+import indigoops.indigooperationsfurnituremod.block.blocklogic.*;
+import indigoops.indigooperationsfurnituremod.entity.ModEntities;
+import indigoops.indigooperationsfurnituremod.entity.client.ChairRenderer;
 import indigoops.indigooperationsfurnituremod.screen.ModScreens;
 import indigoops.indigooperationsfurnituremod.screen.SinkScreen;
 import indigoops.indigooperationsfurnituremod.screen.CounterTopScreen;
@@ -13,6 +12,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
@@ -36,6 +36,7 @@ public class IndigoOperationsFurnitureModClient implements ClientModInitializer 
         HandledScreens.register(ModScreens.SINK_SCREEN_HANDLER, SinkScreen::new);
         BlockEntityRendererRegistry.register(ModBlockEntities.COUNTER_TOP_BLOCK_ENTITY, CounterTopBlockEntityRenderer::new);
         HandledScreens.register(ModScreens.COUNTER_TOP_SCREEN_HANDLER, CounterTopScreen::new);
+        EntityRendererRegistry.register(ModEntities.CHAIR, ChairRenderer::new);
 
         // Handle transparency for cloth
         BlockRenderLayerMap.INSTANCE.putBlock(ACACIA_TABLE, RenderLayer.getCutout());
@@ -48,6 +49,18 @@ public class IndigoOperationsFurnitureModClient implements ClientModInitializer 
         BlockRenderLayerMap.INSTANCE.putBlock(OAK_TABLE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(SPRUCE_TABLE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(WARPED_TABLE, RenderLayer.getCutout());
+
+        // Register wood colors for Chair
+        registerChairColorProvider(ACACIA_CHAIR, 0xb05c34);
+        registerChairColorProvider(BIRCH_CHAIR, 0xd4c484);
+        registerChairColorProvider(CHERRY_CHAIR, 0xdc9c94);
+        registerChairColorProvider(CRIMSON_CHAIR, 0x843c5c);
+        registerChairColorProvider(DARK_OAK_CHAIR, 0x4c341c);
+        registerChairColorProvider(JUNGLE_CHAIR, 0xb8885c);
+        registerChairColorProvider(MANGROVE_CHAIR, 0x8c4c3c);
+        registerChairColorProvider(OAK_CHAIR, 0xc49c64);
+        registerChairColorProvider(SPRUCE_CHAIR, 0x7c5c34);
+        registerChairColorProvider(WARPED_CHAIR, 0x3c8c8c);
 
         // Register wood colors for Table
         registerTableColorProvider(ACACIA_TABLE, 0xb05c34);
@@ -114,6 +127,27 @@ public class IndigoOperationsFurnitureModClient implements ClientModInitializer 
         }, tableBlock);
     }
 
+    private int getCoushinColor(ChairBlock.ChairCoushin coushinType){
+        switch (coushinType) {
+            case WHITE: return 0xFFFFFF;
+            case LIGHTGRAY: return 0xABABAB;
+            case GRAY: return 0x6F6F6F;
+            case BLACK: return 0x333333;
+            case BROWN: return 0x724728;
+            case RED: return 0xB02E26;
+            case ORANGE: return 0xF9801D;
+            case YELLOW: return 0xFED83D;
+            case LIME: return 0x80C71F;
+            case GREEN: return 0x5D7C15;
+            case CYAN: return 0x169C9C;
+            case LIGHTBLUE: return 0x3AB3DA;
+            case BLUE: return 0x3C44AA;
+            case PURPLE: return 0x8932B8;
+            case MAGENTA: return 0xC74EBD;
+            case PINK: return 0xF38BAA;
+            default: return -1;
+        }
+    }
     private int getClothColor(TableBlock.TableCloth clothType) {
         switch (clothType) {
             case WHITE: return 0xFFFFFF;
@@ -176,6 +210,18 @@ public class IndigoOperationsFurnitureModClient implements ClientModInitializer 
                         if (item == OAK_COUNTER_TOP.asItem()) return 0xFF000000 | 0xc49c64;
                         if (item == SPRUCE_COUNTER_TOP.asItem()) return 0xFF000000 | 0x7c5c34;
                         if (item == WARPED_COUNTER_TOP.asItem()) return 0xFF000000 | 0x3c8c8c;
+
+                        //Chair item checks
+                        if (item == ACACIA_CHAIR.asItem()) return 0xFF000000 | 0xb05c34;
+                        if (item == BIRCH_CHAIR.asItem()) return 0xFF000000 | 0xd4c484;
+                        if (item == CHERRY_CHAIR.asItem()) return 0xFF000000 | 0xdc9c94;
+                        if (item == CRIMSON_CHAIR.asItem()) return 0xFF000000 | 0x843c5c;
+                        if (item == DARK_OAK_CHAIR.asItem()) return 0xFF000000 | 0x4c341c;
+                        if (item == JUNGLE_CHAIR.asItem()) return 0xFF000000 | 0xb8885c;
+                        if (item == MANGROVE_CHAIR.asItem()) return 0xFF000000 | 0x8c4c3c;
+                        if (item == OAK_CHAIR.asItem()) return 0xFF000000 | 0xc49c64;
+                        if (item == SPRUCE_CHAIR.asItem()) return 0xFF000000 | 0x7c5c34;
+                        if (item == WARPED_CHAIR.asItem()) return 0xFF000000 | 0x3c8c8c;
                     }
                     return -1;
                 },
@@ -187,10 +233,14 @@ public class IndigoOperationsFurnitureModClient implements ClientModInitializer 
                 ACACIA_SINK.asItem(), BIRCH_SINK.asItem(), CHERRY_SINK.asItem(), CRIMSON_SINK.asItem(),
                 DARK_OAK_SINK.asItem(), JUNGLE_SINK.asItem(), MANGROVE_SINK.asItem(), OAK_SINK.asItem(),
                 SPRUCE_SINK.asItem(), WARPED_SINK.asItem(),
-                // add counter items to registration
+                // Add counter items to registration
                 ACACIA_COUNTER_TOP.asItem(), BIRCH_COUNTER_TOP.asItem(), CHERRY_COUNTER_TOP.asItem(), CRIMSON_COUNTER_TOP.asItem(),
                 DARK_OAK_COUNTER_TOP.asItem(), JUNGLE_COUNTER_TOP.asItem(), MANGROVE_COUNTER_TOP.asItem(), OAK_COUNTER_TOP.asItem(),
-                SPRUCE_COUNTER_TOP.asItem(), WARPED_COUNTER_TOP.asItem());
+                SPRUCE_COUNTER_TOP.asItem(), WARPED_COUNTER_TOP.asItem(),
+                // Add chair items to registration
+                ACACIA_CHAIR.asItem(), BIRCH_CHAIR.asItem(), CHERRY_CHAIR.asItem(), CRIMSON_CHAIR.asItem(),
+                DARK_OAK_CHAIR.asItem(), JUNGLE_CHAIR.asItem(), MANGROVE_CHAIR.asItem(), OAK_CHAIR.asItem(),
+                SPRUCE_CHAIR.asItem(), WARPED_CHAIR.asItem());
     }
 
     private void registerSinkColorProvider(Block sinkBlock, int woodColor) {
@@ -209,5 +259,16 @@ public class IndigoOperationsFurnitureModClient implements ClientModInitializer 
             }
             return -1;
         }, counterTopBlock);
+    }
+
+    private void registerChairColorProvider(Block chairBlock, int woodColor) {
+        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> {
+            if(tintIndex == 0) {
+                return woodColor;
+            } else if (tintIndex == 1) {
+                return getCoushinColor(state.get(ChairBlock.COUSHIN_TYPE));
+            }
+            return -1;
+        }, chairBlock);
     }
 }
